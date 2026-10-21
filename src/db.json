@@ -1,0 +1,61 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "tipoUsuario": "doador",
+      "nome": "Maria Clara",
+      "email": "xxxxx@email.com",
+      "senha": "123456",
+      "cpf": "00000000000",
+      "telefone": "31999999999",
+      "dataNascimento": "2000-05-15",
+      "tipoSanguineo": "A+",
+      "dataCadastro": "2026-10-01",
+      "fotoPerfil": "img/.../....png"
+    },
+    {
+      "id": 2,
+      "tipoUsuario": "hemocentro",
+      "nomeInstituicao": "Hemominas Belo Horizonte",
+      "cnpj": "00000000000000",
+      "email": "xxxxx@hemominas.com",
+      "senha": "123456",
+      "telefone": "3133333333",
+      "fotoPerfil": "img/.../....png",
+      "dataCadastro": "2026-10-01",
+      "cep": "00000000",
+      "rua": "XXX",
+      "numero": "000",
+      "bairro": "Centro",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "latitude": -19.9208,
+      "longitude": -43.9378
+    }
+  ],
+
+  "campanhas": [
+    {
+      "id": 1,
+      "titulo": "Estoque A+ em baixa",
+      "descricao": "Precisamos de doadores urgentes.",
+      "dataPublicacao": "2026-10-19",
+      "dataEvento": "2026-10-25",
+      "imagem": "img/.../....jpg",
+      "hemocentroId": 2,
+      "status": "ativa"
+    }
+  ],
+
+  "agendamentos": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "hemocentroId": 2,
+      "data": "2026-10-30",
+      "horario": "09:00",
+      "status": "pendente",
+      "dataSolicitacao": "2026-10-19"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+body {
+    background-color:#F0F8FF;
+}
+
+.navbar {
+    background-color: #1F2C4D;
+    min-height: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nav-item {
+    margin-bottom: 15px;
+
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #1F2C4D;
+    
+}
+
+.nav-link:hover{
+    font-weight: bold;
+    color: black;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+
+.Logo{
+    width: 80px;
+}
+
