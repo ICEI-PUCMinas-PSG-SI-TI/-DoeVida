@@ -1,0 +1,135 @@
+.foto-perfil{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+   
+}
+
+.card{
+    border-radius: 20px;
+}
+
+h1 {
+    color: #1F2C4D;
+    font-family: 'Poppins' , sans-serif;
+}
+
+h2{
+    color: #1F2C4D;
+}
+
+@media (max-width: 576px){
+
+    .foto-perfil{
+        display: block;
+        margin: 0 auto;
+    }
+
+    .card-body h2{
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .card-body .badge{
+        display: block;
+        width: fit-content;
+    }
+
+    .btn-danger{
+        margin-top: 13px;
+      
+    }
+
+}
+/* css de dados pessoais */
+.titulo-card{
+    font-weight: 600;
+    color: #1F2C4D;
+}
+
+.info-item{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-item i{
+    color: #1F2C4D;
+}
+
+.titulo-info{
+    margin-bottom: 0;
+    color: #7A879B;
+    font-size: 0.9rem;
+}
+
+.valor-info{
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #1F2C4D;
+}
+
+/* css de informações de doação */
+
+.titulo-card{
+    color: #1F2C4D;
+    font-weight: 600;
+}
+
+.info-item{
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.info-item i{
+    color: #1F2C4D;
+}
+
+.titulo-info{
+    color: #7A879B;
+    margin-bottom: 4px;
+}
+
+.valor-info{
+    color: #1F2C4D;
+    font-weight: 500;
+}
+
+/* css da segurança da conta */
+.item-seguranca{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px;
+    margin-bottom: 15px;
+
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.descricao-item{
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.item-perigo{
+    border: 1px solid #f5c2c7;
+    background-color: #fff5f5;
+}
+
+@media (max-width: 576px){
+
+    .item-seguranca{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .item-seguranca button{
+        width: 100%;
+    }
+
+}

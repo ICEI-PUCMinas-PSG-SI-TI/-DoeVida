@@ -1,14 +1,29 @@
 .carousel{
     width: 100%;
-    margin-top: 50px;
 }
 
 .carousel-item img{
     width: 100%;
-    height: 350px;
-    object-fit:contain;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    margin-top: 20px;
 }
 
+#carouselDoeVida{
+    width: 100%;
+    margin: 0;
+}
+@media (min-width: 992px){
+
+    .carousel-item img{
+        max-height: 457px;
+        object-fit: contain;
+        margin-top: 20px;
+        border-radius: 16px;
+    }
+
+}
 .carousel-indicators button{
     background-color: black !important;
 }
@@ -18,15 +33,32 @@ h1{
     margin-top: 30px;
 }
 
-.card-noticia{
-    width: 300px;
-    height: 485px;
-    margin: 50px;
-    border-radius: 12px;
-    border: none;
-    background-color: white;
+.titulo-2{
+    font-size: 0.8rem;
+    text-align: center;
+    font-family: 'Poppins' , sans-serif;
 }
 
+#noticia-t {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-weight: 400;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    font-family: 'Poppins' , sans-serif;
+     
+}
+.card-noticia{
+    max-width: 260px;
+    height: 500px !important; 
+    margin: 20px auto;
+    border-radius: 12px;
+    border: 0.8px solid #1F2C4D;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+}
 .card-noticia img {
     border-radius: 12px;
     padding: 5px;
@@ -34,6 +66,47 @@ h1{
 }
 
 .card-text{
-    text-align: justify;
+    text-align: left;
     font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+#bt-card1{
+    margin-top: 55px;
+}
+
+.btn-ver-mais{
+    background-color: #d34235;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.btn-ver-mais{
+    margin-top: auto;
+    align-self: flex-end;
+}
+@media (max-width: 576px){
+
+    .btn-ver-mais{
+        padding: 5px 5px;
+        font-size: 0.85rem;
+        margin-left: 160px;
+    }
+}
+
+@media (max-width: 576px){
+
+    h1{
+        font-size: 2rem;
+        padding: 0 15px;
+    }
+
+    .titulo-2{
+        padding: 0 20px;
+    }
+
 }
