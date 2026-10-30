@@ -9,6 +9,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/ContaUsuario.css">
+    <script src="../js/ContaUsuario.js"></script>
     
     
 </head>
@@ -108,9 +109,9 @@
 
                 <div class="col-12 col-md-6">
 
-                    <h2 class="fw-bold">
-                        Olá, Ana!
-                    </h2>
+                 <h2 class="fw-bold" id="bem-vindo-usuario">
+                    Olá, Ana!
+                </h2>
 
                     <span class="badge bg-success">
                     Doadora cadastrada
@@ -126,10 +127,14 @@
 
                 <div class="col-12 col-md-3 text-md-end mt-3 mt-md-0">
 
-                    <button class="btn btn-danger">
-                        Editar Perfil
-                    </button>
+                    <button
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalEditarPerfil">
 
+                        Editar Perfil
+
+                    </button>
                 </div>
 
             </div>
@@ -140,7 +145,7 @@
 
    <div class="row g-4 mt-4">
 
-    <!-- DADOS PESSOAIS -->
+
     <div class="col-12 col-md-6">
 
         <div class="card h-100">
@@ -156,7 +161,7 @@
 
                     <div>
                         <p class="titulo-info">Nome</p>
-                        <p class="valor-info">Ana Clara Santos</p>
+                        <p class="valor-info" id="nomeUsuario">Ana Clara Santos</p>
                     </div>
                 </div>
 
@@ -167,7 +172,7 @@
 
                     <div>
                         <p class="titulo-info">E-mail</p>
-                        <p class="valor-info">ana.clara@email.com</p>
+                        <p class="valor-info" id="emailUsuario">ana.clara@email.com</p>
                     </div>
                 </div>
 
@@ -178,7 +183,7 @@
 
                     <div>
                         <p class="titulo-info">Data de nascimento</p>
-                        <p class="valor-info">14/05/2008</p>
+                        <p class="valor-info" id="dataNascimentoUsuario">14/05/2008</p>
                     </div>
                 </div>
 
@@ -189,7 +194,7 @@
 
                     <div>
                         <p class="titulo-info">CPF</p>
-                        <p class="valor-info">***.***.***-**</p>
+                        <p class="valor-info" id="cpfUsuario">***.***.***-**</p>
                     </div>
                 </div>
 
@@ -200,7 +205,7 @@
 
                     <div>
                         <p class="titulo-info">Telefone</p>
-                        <p class="valor-info">(31) 98765-4321</p>
+                        <p class="valor-info" id="telefoneUsuario">(31) 98765-4321</p>
                     </div>
                 </div>
 
@@ -210,7 +215,6 @@
 
     </div>
 
-    <!-- INFORMAÇÕES DE DOAÇÃO -->
     <div class="col-12 col-md-6">
 
         <div class="card h-100">
@@ -305,7 +309,7 @@
             Segurança e conta
         </h3>
 
-        <!-- Alterar senha -->
+  
         <div class="item-seguranca">
 
             <div class="d-flex align-items-center gap-3">
@@ -326,13 +330,18 @@
 
             </div>
 
-            <button class="btn btn-outline-secondary">
+           <button
+                class="btn btn-outline-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#modalAlterarSenha">
+
                 Alterar senha
+
             </button>
 
         </div>
 
-        <!-- Privacidade -->
+  
         <div class="item-seguranca">
 
             <div class="d-flex align-items-center gap-3">
@@ -359,7 +368,7 @@
 
         </div>
 
-        <!-- Excluir conta -->
+  
         <div class="item-seguranca item-perigo">
 
             <div class="d-flex align-items-center gap-3">
@@ -380,8 +389,13 @@
 
             </div>
 
-            <button class="btn btn-outline-danger">
+           <button
+                class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#modalExcluirConta">
+
                 Excluir conta
+
             </button>
 
         </div>
@@ -390,7 +404,297 @@
 
 </div>
 
+<div class="modal fade" id="modalEditarPerfil">
 
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Editar Perfil
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+    <form id="formEditarPerfil">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Nome
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="inputNome">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                E-mail
+            </label>
+
+            <input
+                type="email"
+                class="form-control"
+                id="inputEmail">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Telefone
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="inputTelefone">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Data de nascimento
+            </label>
+
+            <input
+                type="date"
+                class="form-control"
+                id="inputNascimento">
+
+        </div>
+
+    </form>
+
+</div>
+
+        <div class="modal-footer">
+
+    <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">
+
+        Cancelar
+
+    </button>
+
+    <button
+        type="button"
+        class="btn btn-danger"
+        id="btnSalvarPerfil">
+
+        Salvar
+
+    </button>
+
+</div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalAlterarSenha">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Alterar Senha
+                </h5>
+
+                 <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+    <form id="formAlterarSenha">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Senha Atual
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="inputSenhaAtual">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Nova Senha
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="inputNovaSenha">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Confirmar Senha
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="inputConfirmarSenha">
+
+        </div>
+
+
+
+    </form>
+
+</div>
+
+        <div class="modal-footer">
+
+    <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">
+
+        Cancelar
+
+    </button>
+
+    <button
+        type="button"
+        class="btn btn-danger"
+        id="btnSalvarSenha">
+
+        Salvar
+
+    </button>
+
+</div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalExcluirConta">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Excluir Conta
+                </h5>
+
+                 <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="alert alert-danger">
+
+             <strong>Atenção!</strong>
+
+            Esta ação não poderá ser desfeita.
+
+            </div>
+
+             <p class="text-danger fw-bold">
+            Esta ação é irreversível.
+            </p>
+
+            <p>
+                Tem certeza que deseja excluir sua conta?
+
+            Esta ação não poderá ser desfeita e todos os seus
+            dados serão removidos.
+            </p>
+
+    <form id="formExcluirConta">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="inputSenha">
+
+        </div>
+
+
+        <div class="modal-footer">
+
+    <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">
+
+        Cancelar
+
+    </button>
+
+    <button
+        type="button"
+        class="btn btn-danger"
+        id="btnExcluirConta">
+
+        Excluir Conta
+
+    </button>
+
+</div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </main>
 

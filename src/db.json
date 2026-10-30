@@ -1,11 +1,11 @@
 {
-  "usuarios": [
+  "usuario": [
     {
       "id": 1,
       "tipoUsuario": "doador",
       "nome": "Maria Clara",
       "email": "xxxxx@email.com",
-      "senha": "123456",
+      "senha": "0987",
       "cpf": "00000000000",
       "telefone": "31999999999",
       "dataNascimento": "2000-05-15",
