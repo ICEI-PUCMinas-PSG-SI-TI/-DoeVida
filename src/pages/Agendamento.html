@@ -83,59 +83,156 @@
 
 <main class="container mt-4">
 
-   <h1 class="text-center mb-4">Agendamento</h1>
+   <div class="text-center mb-4">
+    <h1 class="fw-bold fs-3">
+        Agende sua doação
+    </h1>
+    <p class="text-secondary">
+        Escolha a data, o local e o horário para realizar sua doação de sangue.
+    </p>
+   </div>
 
     <div class="row justify-content-center">
-        <div class="col-12 col-md-7 col-lg-5">
+        <div class="col-12 col-md-9 col-lg-7">
 
-            <form class="bg-light p-4 rounded-3 shadow-sm">
+        
+<form class="bg-white p-3 rounded-4 shadow-sm">
 
-                <div class="mb-3">
-                    <label for="data" class="form-label">Data</label>
-                    <input type="date" class="form-control" id="data">
-                </div>
-<div class="mb-3">
-    <label for="hemocentro" class="form-label">Hemocentro</label>
+    <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
 
-    <select id="hemocentro" class="form-select">
-        <option value="">Selecione um hemocentro</option>
-        <option value="1">Hemocentro 1</option>
-        <option value="2">Hemocentro 2</option>
-        <option value="3">Hemocentro 3</option>
-    </select>
+        <div class="rounded-circle text-white d-flex align-items-center justify-content-center flex-shrink-0 align-items-center"
+             style="background-color: #A61B1B; width: 34px; height: 34px;">
+            1
+        </div>
+
+        <div class="flex-grow-1">
+            <label for="data" class="form-label fw-bold">
+                Data da doação
+            </label>
+
+            <p class="text-secondary small mb-1">
+                Escolha o dia em que deseja realizar sua doação.
+            </p>
+
+            <input type="date" class="form-control" id="data">
+        </div>
+
+    </div>
+
+    <hr class="my-2">
+
+    <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+
+        <div class="rounded-circle text-white d-flex align-items-center justify-content-center flex-shrink-0"
+             style="background-color: #A61B1B; width: 34px; height: 34px;">
+            2
+        </div>
+
+        <div class="flex-grow-1">
+            <label for="hemocentro" class="form-label fw-bold">
+                Hemocentro
+            </label>
+
+            <p class="text-secondary small mb-1">
+                Escolha onde deseja realizar sua doação.
+            </p>
+
+            <select id="hemocentro" class="form-select">
+                <option value="">Selecione um hemocentro</option>
+                <option value="1">Hemocentro 1</option>
+                <option value="2">Hemocentro 2</option>
+                <option value="3">Hemocentro 3</option>
+            </select>
+        </div>
+
+    </div>
+
+    <hr class="my-2">
+
+    
+<div class="d-flex gap-2 mb-3">
+
+    <div class="rounded-circle text-white d-flex align-items-center justify-content-center flex-shrink-0"
+         style="background-color: #A61B1B; width: 34px; height: 34px;">
+        3
+    </div>
+
+    <div class="flex-grow-1" style="min-width: 0;">
+
+        <p class="fw-bold mb-2">Horário disponível</p>
+
+        <div class="row row-cols-2 row-cols-sm-4 g-2">
+
+            <div class="col">
+                <input type="radio" class="btn-check" name="horario" id="hora8" value="08:00">
+                <label class="btn btn-outline-danger w-100" for="hora8">08:00</label>
+            </div>
+
+            <div class="col">
+                <input type="radio" class="btn-check" name="horario" id="hora9" value="09:00">
+                <label class="btn btn-outline-danger w-100" for="hora9">09:00</label>
+            </div>
+
+            <div class="col">
+                <input type="radio" class="btn-check" name="horario" id="hora10" value="10:00">
+                <label class="btn btn-outline-danger w-100" for="hora10">10:00</label>
+            </div>
+
+            <div class="col">
+                <input type="radio" class="btn-check" name="horario" id="hora14" value="14:00">
+                <label class="btn btn-outline-danger w-100" for="hora14">14:00</label>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-<div class="mb-3">
-    <label for="horario" class="form-label">Horário</label>
 
-    <select class="form-select" id="horario">
-        <option value="">Selecione um horário</option>
-        <option>08:00</option>
-        <option>09:00</option>
-        <option>10:00</option>
-        <option>14:00</option>
-    </select>
-</div>
-<div class="mb-3">
-    <label for="sangue" class="form-label">Tipo Sanguíneo</label>
 
-    <select class="form-select" id="sangue">
-        <option value="">Selecione seu tipo sanguíneo</option>
-        <option>A+</option>
-        <option>A-</option>
-        <option>B+</option>
-        <option>B-</option>
-        <option>AB+</option>
-        <option>AB-</option>
-        <option>O+</option>
-        <option>O-</option>
-    </select>
-</div>
-<div class="text-center">
-    <button type="button" class="btn btn-danger" style="background-color: #A61B1B; border-color: #A61B1B;" onclick="agendar()">
-        Agendar
-    </button>
-</div>
-            </form>
+    <hr class="my-2">
+
+    <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+
+        <div class="rounded-circle text-white d-flex align-items-center justify-content-center flex-shrink-0 algin"
+             style="background-color: #A61B1B; width: 34px; height: 34px;">
+            4
+        </div>
+
+        <div class="flex-grow-1">
+            <label for="sangue" class="form-label fw-bold">
+                Tipo Sanguíneo
+            </label>
+
+            <p class="text-secondary small mb-1">
+                Informe seu tipo sanguíneo.
+            </p>
+
+            <select id="sangue" class="form-select">
+                <option value="">Selecione seu tipo sanguíneo</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="d-grid col-12 col-md-6 mx-auto mt-4">
+        <button type="button" class="btn btn-danger btn-lg fw-semibold"
+                style="background-color: #A61B1B; border-color: #A61B1B;"
+                onclick="agendar()">
+            Confirmar agendamento
+        </button>
+    </div>
+
+</form>
+
 
         </div>
     </div>

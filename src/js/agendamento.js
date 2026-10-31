@@ -1,7 +1,15 @@
 function agendar () {
     let data = document.getElementById("data").value;
     let hemocentro = document.getElementById("hemocentro").value;
-    let horario = document.getElementById("horario").value;
+    
+    let horarioSelecionado = document.querySelector('input[name="horario"]:checked');
+
+    let horario = "";
+
+    if (horarioSelecionado != null) {
+    horario = horarioSelecionado.value;
+    }
+
     let sangue = document.getElementById("sangue").value;
 
     let hoje = new Date();
