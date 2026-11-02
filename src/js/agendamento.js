@@ -1,13 +1,14 @@
-function agendar () {
+
+function agendar() {
     let data = document.getElementById("data").value;
     let hemocentro = document.getElementById("hemocentro").value;
-    
+
     let horarioSelecionado = document.querySelector('input[name="horario"]:checked');
 
     let horario = "";
 
     if (horarioSelecionado != null) {
-    horario = horarioSelecionado.value;
+        horario = horarioSelecionado.value;
     }
 
     let sangue = document.getElementById("sangue").value;
@@ -17,8 +18,7 @@ function agendar () {
 
     let dataEscolhida = new Date(data + "T00:00:00");
 
-
-    if (data == "" || hemocentro == "" || horario == "" || sangue == ""){
+    if (data == "" || hemocentro == "" || horario == "" || sangue == "") {
         alert("Preencha todos os campos!");
     }
     else if (dataEscolhida < hoje) {
@@ -29,8 +29,24 @@ function agendar () {
         localStorage.setItem("hemocentro", hemocentro);
         localStorage.setItem("horario", horario);
         localStorage.setItem("sangue", sangue);
+
         alert("Agendamento salvo com sucesso.");
     }
 }
-let hoje = new Date ().toLocaleDateString("sv-SE");
-    document.getElementById("data").min = hoje;
+
+function selecionarHorario(campo) {
+
+    let horarios = document.querySelectorAll('input[name="horario"]');
+
+    for (let i = 0; i < horarios.length; i++) {
+
+        if (horarios[i] != campo) {
+            horarios[i].checked = false;
+        }
+
+    }
+
+}
+
+let hoje = new Date().toLocaleDateString("sv-SE");
+document.getElementById("data").min = hoje;
