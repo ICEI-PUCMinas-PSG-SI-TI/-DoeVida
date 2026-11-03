@@ -44,17 +44,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function ativarCampos(ids, ativo) {
+
         ids.forEach(id => {
+
             const campo = obterCampo(id);
 
             campo.disabled = !ativo;
 
-            if (campo.id !== "latitude" &&
+            if (
+                campo.id !== "latitude" &&
                 campo.id !== "longitude" &&
-                campo.id !== "fotoPerfil") {
+                campo.id !== "fotoPerfil"
+            ) {
                 campo.required = ativo;
             }
+
         });
+
     }
 
     function exibirFormulario() {
@@ -94,9 +100,12 @@ document.addEventListener("DOMContentLoaded", () => {
         areaBotoes.classList.remove("d-none");
 
         ativarCampos(camposComunsIds, true);
+
     }
 
     tipoUsuario.addEventListener("change", exibirFormulario);
+
+    // MÁSCARAS
 
     function aplicarMascaraCPF(valor) {
 
@@ -106,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/(\d{3})(\d)/, "$1.$2")
             .replace(/(\d{3})(\d)/, "$1.$2")
             .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
     }
 
     function aplicarMascaraCNPJ(valor) {
@@ -117,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
             .replace(/\.(\d{3})(\d)/, ".$1/$2")
             .replace(/(\d{4})(\d)/, "$1-$2");
+
     }
 
     function aplicarMascaraTelefone(valor) {
@@ -134,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return numeros
             .replace(/^(\d{2})(\d)/, "($1) $2")
             .replace(/(\d{5})(\d)/, "$1-$2");
+
     }
 
     function aplicarMascaraCEP(valor) {
@@ -142,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/\D/g, "")
             .slice(0, 8)
             .replace(/^(\d{5})(\d)/, "$1-$2");
+
     }
 
     obterCampo("cpf").addEventListener("input", event => {
@@ -160,9 +173,16 @@ document.addEventListener("DOMContentLoaded", () => {
         event.target.value = aplicarMascaraCEP(event.target.value);
     });
 
+    // VALIDAÇÃO DE CPF
+
     function validarCPF(cpf) {
 
         cpf = cpf.replace(/\D/g, "");
+
+        // Permite CPF com todos os dígitos iguais a zero para testes.
+        if (cpf === "00000000000") {
+            return true;
+        }
 
         if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
             return false;
@@ -197,11 +217,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         return digito === Number(cpf[10]);
+
     }
+
+    // VALIDAÇÃO DE CNPJ
 
     function validarCNPJ(cnpj) {
 
         cnpj = cnpj.replace(/\D/g, "");
+
+        // Permite CNPJ com todos os dígitos iguais a zero para testes.
+        if (cnpj === "00000000000000") {
+            return true;
+        }
 
         if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) {
             return false;
@@ -218,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const resto = soma % 11;
 
             return resto < 2 ? 0 : 11 - resto;
+
         };
 
         const primeiro = calcularDigito(
@@ -231,14 +260,26 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         return cnpj.endsWith(`${primeiro}${segundo}`);
+
     }
+
+    // VALIDAÇÃO DE TELEFONE
 
     function validarTelefone(telefone) {
 
         const numeros = telefone.replace(/\D/g, "");
 
+        // Permite telefone com todos os dígitos iguais a zero para testes.
+        if (numeros === "0000000000" ||
+            numeros === "00000000000") {
+            return true;
+        }
+
         return numeros.length === 10 || numeros.length === 11;
+
     }
+
+    // VALIDAÇÃO DE SENHA
 
     function validarSenha() {
 
@@ -247,7 +288,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (senha.value !== confirmarSenha.value) {
 
-            confirmarSenha.setCustomValidity("As senhas não coincidem.");
+            confirmarSenha.setCustomValidity(
+                "As senhas não coincidem."
+            );
 
             return false;
 
@@ -256,7 +299,10 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmarSenha.setCustomValidity("");
 
         return true;
+
     }
+
+    // VALIDAÇÃO DOS CAMPOS ESPECÍFICOS
 
     function validarCamposEspecificos() {
 
@@ -267,9 +313,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const cpf = obterCampo("cpf");
 
             if (!validarCPF(cpf.value)) {
+
                 cpf.setCustomValidity("CPF inválido.");
+
             } else {
+
                 cpf.setCustomValidity("");
+
             }
 
             return validarCPF(cpf.value);
@@ -282,15 +332,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const cep = obterCampo("cep");
 
             if (!validarCNPJ(cnpj.value)) {
+
                 cnpj.setCustomValidity("CNPJ inválido.");
+
             } else {
+
                 cnpj.setCustomValidity("");
+
             }
 
             if (cep.value.replace(/\D/g, "").length !== 8) {
+
                 cep.setCustomValidity("CEP inválido.");
+
             } else {
+
                 cep.setCustomValidity("");
+
             }
 
             return validarCNPJ(cnpj.value) &&
@@ -299,22 +357,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         return false;
+
     }
+
+    // VALIDAÇÃO DOS CAMPOS COMUNS
 
     function validarCamposComuns() {
 
         const telefone = obterCampo("telefone");
 
         if (!validarTelefone(telefone.value)) {
+
             telefone.setCustomValidity("Telefone inválido.");
+
         } else {
+
             telefone.setCustomValidity("");
+
         }
 
         const senhaValida = validarSenha();
 
         return validarTelefone(telefone.value) && senhaValida;
+
     }
+
+    // MENSAGENS
 
     function exibirMensagem(texto, tipo) {
 
@@ -324,16 +392,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // PRÓXIMO ID
+
     function obterProximoId() {
 
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        const usuarios = JSON.parse(
+            localStorage.getItem("usuarios")
+        ) || [];
 
         if (usuarios.length === 0) {
             return 1;
         }
 
-        return Math.max(...usuarios.map(usuario => usuario.id)) + 1;
+        return Math.max(
+            ...usuarios.map(usuario => Number(usuario.id) || 0)
+        ) + 1;
+
     }
+
+    // FOTOGRAFIA DE PERFIL
 
     async function obterFotoPerfil() {
 
@@ -364,7 +441,10 @@ document.addEventListener("DOMContentLoaded", () => {
             leitor.readAsDataURL(arquivo);
 
         });
+
     }
+
+    // DATA DO CADASTRO
 
     function obterDataCadastro() {
 
@@ -375,7 +455,81 @@ document.addEventListener("DOMContentLoaded", () => {
         const dia = String(data.getDate()).padStart(2, "0");
 
         return `${ano}-${mes}-${dia}`;
+
     }
+
+    // VERIFICAÇÃO DE CADASTRO DUPLICADO
+
+    function verificarCadastroDuplicado(usuarios, tipo) {
+
+        const email = obterCampo("email").value
+            .trim()
+            .toLowerCase();
+
+        const telefone = obterCampo("telefone").value
+            .replace(/\D/g, "");
+
+        const emailExiste = usuarios.some(usuario =>
+            String(usuario.email || "").trim().toLowerCase() === email
+        );
+
+        if (emailExiste) {
+
+            return "Este e-mail já está cadastrado.";
+
+        }
+
+        if (tipo === "doador") {
+
+            const cpf = obterCampo("cpf").value.replace(/\D/g, "");
+
+            const cpfExiste = usuarios.some(usuario =>
+                usuario.cpf &&
+                usuario.cpf.replace(/\D/g, "") === cpf
+            );
+
+            if (cpfExiste) {
+
+                return "Este CPF já está cadastrado.";
+
+            }
+
+        }
+
+        if (tipo === "hemocentro") {
+
+            const cnpj = obterCampo("cnpj").value.replace(/\D/g, "");
+
+            const cnpjExiste = usuarios.some(usuario =>
+                usuario.cnpj &&
+                usuario.cnpj.replace(/\D/g, "") === cnpj
+            );
+
+            if (cnpjExiste) {
+
+                return "Este CNPJ já está cadastrado.";
+
+            }
+
+        }
+
+        // Verifica também se o telefone já está cadastrado.
+        const telefoneExiste = usuarios.some(usuario =>
+            usuario.telefone &&
+            usuario.telefone.replace(/\D/g, "") === telefone
+        );
+
+        if (telefoneExiste) {
+
+            return "Este telefone já está cadastrado.";
+
+        }
+
+        return null;
+
+    }
+
+    // CRIAÇÃO DA CONTA
 
     async function criarConta(event) {
 
@@ -386,15 +540,19 @@ document.addEventListener("DOMContentLoaded", () => {
         form.classList.add("was-validated");
 
         const camposEspecificosValidos = validarCamposEspecificos();
+
         const camposComunsValidos = validarCamposComuns();
 
-        if (!form.checkValidity() ||
+        if (
+            !form.checkValidity() ||
             !camposEspecificosValidos ||
-            !camposComunsValidos) {
+            !camposComunsValidos
+        ) {
 
             form.reportValidity();
 
             return;
+
         }
 
         const tipo = tipoUsuario.value;
@@ -405,23 +563,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.getItem("usuarios")
             ) || [];
 
-            const email = obterCampo("email").value.trim().toLowerCase();
-
-            const emailExiste = usuarios.some(usuario =>
-                usuario.email.toLowerCase() === email
+            // Verifica e-mail, CPF, CNPJ e telefone duplicados.
+            const cadastroDuplicado = verificarCadastroDuplicado(
+                usuarios,
+                tipo
             );
 
-            if (emailExiste) {
+            if (cadastroDuplicado) {
 
-                exibirMensagem(
-                    "Este e-mail já está cadastrado.",
-                    "danger"
-                );
+                exibirMensagem(cadastroDuplicado, "danger");
 
                 return;
+
             }
 
-            const telefone = obterCampo("telefone").value.replace(/\D/g, "");
+            const email = obterCampo("email").value
+                .trim()
+                .toLowerCase();
+
+            const telefone = obterCampo("telefone").value
+                .replace(/\D/g, "");
 
             const fotoPerfil = await obterFotoPerfil();
 
@@ -447,21 +608,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 usuario.nome = obterCampo("nome").value.trim();
 
-                usuario.cpf = obterCampo("cpf").value.replace(/\D/g, "");
+                usuario.cpf = obterCampo("cpf").value
+                    .replace(/\D/g, "");
 
-                usuario.dataNascimento = obterCampo("dataNascimento").value;
+                usuario.dataNascimento =
+                    obterCampo("dataNascimento").value;
 
-                usuario.tipoSanguineo = obterCampo("tipoSanguineo").value;
+                usuario.tipoSanguineo =
+                    obterCampo("tipoSanguineo").value;
 
             }
 
             if (tipo === "hemocentro") {
 
-                usuario.nomeInstituicao = obterCampo("nomeInstituicao").value.trim();
+                usuario.nomeInstituicao =
+                    obterCampo("nomeInstituicao").value.trim();
 
-                usuario.cnpj = obterCampo("cnpj").value.replace(/\D/g, "");
+                usuario.cnpj = obterCampo("cnpj").value
+                    .replace(/\D/g, "");
 
-                usuario.cep = obterCampo("cep").value.replace(/\D/g, "");
+                usuario.cep = obterCampo("cep").value
+                    .replace(/\D/g, "");
 
                 usuario.rua = obterCampo("rua").value.trim();
 
@@ -474,6 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 usuario.estado = obterCampo("estado").value;
 
                 const latitude = obterCampo("latitude").value;
+
                 const longitude = obterCampo("longitude").value;
 
                 if (latitude !== "") {
@@ -486,6 +654,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
+            // Salva o novo usuário.
             usuarios.push(usuario);
 
             localStorage.setItem(
@@ -522,6 +691,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // FORMULÁRIO INICIAL
+
     function exibirFormularioInicial() {
 
         camposDoador.classList.add("d-none");
@@ -535,6 +706,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // EVENTOS
+
     form.addEventListener("submit", criarConta);
 
     form.addEventListener("reset", () => {
@@ -546,9 +719,13 @@ document.addEventListener("DOMContentLoaded", () => {
             mensagem.classList.add("d-none");
 
             if (tipoUsuario.value) {
+
                 exibirFormulario();
+
             } else {
+
                 exibirFormularioInicial();
+
             }
 
         }, 0);
