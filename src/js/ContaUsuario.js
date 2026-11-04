@@ -1,27 +1,27 @@
 
-let usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+function verificarLogin() {
 
-if (!usuario) {
+    const usuario =
+        JSON.parse(
+            localStorage.getItem(
+                "usuarioLogado"
+            )
+        );
 
-    usuario = {
-        id: 1,
-        tipoUsuario: "doador",
-        nome: "Maria Clara",
-        email: "xxxxx@email.com",
-        senha: "123456",
-        cpf: "00000000000",
-        telefone: "31999999999",
-        dataNascimento: "2000-05-15",
-        tipoSanguineo: "A+",
-        dataCadastro: "2026-10-01",
-        fotoPerfil: "../imgs/Foto-Perfil.png"
-    };
+    if (!usuario) {
 
-    localStorage.setItem(
-        "usuarioLogado",
-        JSON.stringify(usuario)
-    );
+        window.location.href =
+            "Login.html";
+
+        return null;
+
+    }
+
+    return usuario;
+
 }
+
+const usuario = verificarLogin();
 
 
 

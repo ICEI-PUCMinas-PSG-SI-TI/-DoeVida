@@ -1,0 +1,156 @@
+.icone-localizacao{
+    height: 90px;
+    right: 90px;
+    color: #E30613;
+}
+
+.titulo-pagina{
+    color: #1F2C4D;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: 'Poppins' , sans-serif;
+    
+}
+
+@media (max-width: 768px){
+
+    .titulo-pagina{
+        font-size: 2rem;
+    }
+
+}
+
+
+
+.subtitulo-pagina{
+    color: #4A5F8A;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.mapa-container{
+    margin-top: 40px;
+}
+
+#mapaHemocentros{
+    height: 350px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.titulo-secao h2{
+
+    font-size: 2rem;
+    font-weight: 700;
+     color:#1F2C4D;
+    font-family: 'Poppins' , sans-serif;
+
+}
+
+.titulo-secao{
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.card-hemocentro{
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+}
+
+.dados-hemocentro{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.dados-hemocentro h3{
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+
+}
+
+.dados-hemocentro p{
+    margin: 0;
+    color: #6c757d;
+
+}
+
+.distancia{
+    font-weight: 700;
+    color: #1F2C4D;
+
+}
+
+.icone-hemocentro {
+    height: 40px;
+    right: 40px;
+}
+
+.icone-hemocentro2 {
+    height: 60px;
+    right: 60px;
+}
+
+.endereco-hemocentro{
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.acoes-hemocentro{
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+}
+
+.filtro-ordenacao{
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.filtro-ordenacao label{
+
+    font-weight: 600;
+    color: #30487A;
+    margin: 0;
+    white-space: nowrap;
+
+}
+
+.filtro-ordenacao select{
+
+    width: 190px;
+    border-radius: 20px;
+    border: 1px solid #D8DDE6;
+    color: #30487A;
+    font-weight: 500;
+
+}
+
+
+
+
