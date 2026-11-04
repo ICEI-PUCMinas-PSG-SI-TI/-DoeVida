@@ -130,7 +130,6 @@ function calcularDistancia(
 
 }
 
-
 async function buscarEndereco(){
 
     const endereco =
@@ -286,3 +285,14 @@ async function pesquisarHemocentros(){
     );
 
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    document
+        .getElementById("btnBuscar")
+        .addEventListener(
+            "click",
+            pesquisarHemocentros
+        );
+
+});
