@@ -1,5 +1,5 @@
 const TESTAR_DOADOR = false;
-const TESTAR_HEMOCENTRO = false;
+const TESTAR_HEMOCENTRO = true;
 
 const LIMITE_IMAGEM = 2 * 1024 * 1024;
 const LIMITE_DESCRICAO = 160;
@@ -32,6 +32,14 @@ if (TESTAR_DOADOR) {
     } catch {
         usuarioLogado = null;
     }
+}
+
+if (
+    !TESTAR_DOADOR &&
+    !TESTAR_HEMOCENTRO &&
+    !usuarioLogado
+) {
+    window.location.href = "Login.html";
 }
 
 let campanhas = [];

@@ -105,8 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tipoUsuario.addEventListener("change", exibirFormulario);
 
-    // MÁSCARAS
-
     function aplicarMascaraCPF(valor) {
 
         return valor
@@ -173,13 +171,10 @@ document.addEventListener("DOMContentLoaded", () => {
         event.target.value = aplicarMascaraCEP(event.target.value);
     });
 
-    // VALIDAÇÃO DE CPF
-
     function validarCPF(cpf) {
 
         cpf = cpf.replace(/\D/g, "");
 
-        // Permite CPF com todos os dígitos iguais a zero para testes.
         if (cpf === "00000000000") {
             return true;
         }
@@ -220,13 +215,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // VALIDAÇÃO DE CNPJ
-
     function validarCNPJ(cnpj) {
 
         cnpj = cnpj.replace(/\D/g, "");
 
-        // Permite CNPJ com todos os dígitos iguais a zero para testes.
         if (cnpj === "00000000000000") {
             return true;
         }
@@ -263,23 +255,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // VALIDAÇÃO DE TELEFONE
-
     function validarTelefone(telefone) {
 
         const numeros = telefone.replace(/\D/g, "");
 
-        // Permite telefone com todos os dígitos iguais a zero para testes.
-        if (numeros === "0000000000" ||
-            numeros === "00000000000") {
+        if (
+            numeros === "0000000000" ||
+            numeros === "00000000000"
+        ) {
             return true;
         }
 
         return numeros.length === 10 || numeros.length === 11;
 
     }
-
-    // VALIDAÇÃO DE SENHA
 
     function validarSenha() {
 
@@ -302,8 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // VALIDAÇÃO DOS CAMPOS ESPECÍFICOS
-
     function validarCamposEspecificos() {
 
         const tipo = tipoUsuario.value;
@@ -313,13 +300,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const cpf = obterCampo("cpf");
 
             if (!validarCPF(cpf.value)) {
-
                 cpf.setCustomValidity("CPF inválido.");
-
             } else {
-
                 cpf.setCustomValidity("");
-
             }
 
             return validarCPF(cpf.value);
@@ -332,23 +315,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const cep = obterCampo("cep");
 
             if (!validarCNPJ(cnpj.value)) {
-
                 cnpj.setCustomValidity("CNPJ inválido.");
-
             } else {
-
                 cnpj.setCustomValidity("");
-
             }
 
             if (cep.value.replace(/\D/g, "").length !== 8) {
-
                 cep.setCustomValidity("CEP inválido.");
-
             } else {
-
                 cep.setCustomValidity("");
-
             }
 
             return validarCNPJ(cnpj.value) &&
@@ -360,20 +335,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // VALIDAÇÃO DOS CAMPOS COMUNS
-
     function validarCamposComuns() {
 
         const telefone = obterCampo("telefone");
 
         if (!validarTelefone(telefone.value)) {
-
             telefone.setCustomValidity("Telefone inválido.");
-
         } else {
-
             telefone.setCustomValidity("");
-
         }
 
         const senhaValida = validarSenha();
@@ -382,8 +351,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // MENSAGENS
-
     function exibirMensagem(texto, tipo) {
 
         mensagem.textContent = texto;
@@ -391,8 +358,6 @@ document.addEventListener("DOMContentLoaded", () => {
         mensagem.className = `alert alert-${tipo} mt-3`;
 
     }
-
-    // PRÓXIMO ID
 
     function obterProximoId() {
 
@@ -409,8 +374,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ) + 1;
 
     }
-
-    // FOTOGRAFIA DE PERFIL
 
     async function obterFotoPerfil() {
 
@@ -444,8 +407,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // DATA DO CADASTRO
-
     function obterDataCadastro() {
 
         const data = new Date();
@@ -457,8 +418,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${ano}-${mes}-${dia}`;
 
     }
-
-    // VERIFICAÇÃO DE CADASTRO DUPLICADO
 
     function verificarCadastroDuplicado(usuarios, tipo) {
 
@@ -474,9 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (emailExiste) {
-
             return "Este e-mail já está cadastrado.";
-
         }
 
         if (tipo === "doador") {
@@ -489,9 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (cpfExiste) {
-
                 return "Este CPF já está cadastrado.";
-
             }
 
         }
@@ -506,30 +461,23 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (cnpjExiste) {
-
                 return "Este CNPJ já está cadastrado.";
-
             }
 
         }
 
-        // Verifica também se o telefone já está cadastrado.
         const telefoneExiste = usuarios.some(usuario =>
             usuario.telefone &&
             usuario.telefone.replace(/\D/g, "") === telefone
         );
 
         if (telefoneExiste) {
-
             return "Este telefone já está cadastrado.";
-
         }
 
         return null;
 
     }
-
-    // CRIAÇÃO DA CONTA
 
     async function criarConta(event) {
 
@@ -563,7 +511,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.getItem("usuarios")
             ) || [];
 
-            // Verifica e-mail, CPF, CNPJ e telefone duplicados.
             const cadastroDuplicado = verificarCadastroDuplicado(
                 usuarios,
                 tipo
@@ -654,7 +601,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            // Salva o novo usuário.
             usuarios.push(usuario);
 
             localStorage.setItem(
@@ -662,23 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 JSON.stringify(usuarios)
             );
 
-            localStorage.setItem(
-                "usuarioLogado",
-                JSON.stringify(usuario)
-            );
-
-            exibirMensagem(
-                "Conta criada com sucesso!",
-                "success"
-            );
-
-            form.reset();
-
-            form.classList.remove("was-validated");
-
-            tipoUsuario.value = "";
-
-            exibirFormularioInicial();
+            window.location.href = "Login.html";
 
         } catch (erro) {
 
@@ -690,8 +620,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
-    // FORMULÁRIO INICIAL
 
     function exibirFormularioInicial() {
 
@@ -706,8 +634,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // EVENTOS
-
     form.addEventListener("submit", criarConta);
 
     form.addEventListener("reset", () => {
@@ -719,13 +645,9 @@ document.addEventListener("DOMContentLoaded", () => {
             mensagem.classList.add("d-none");
 
             if (tipoUsuario.value) {
-
                 exibirFormulario();
-
             } else {
-
                 exibirFormularioInicial();
-
             }
 
         }, 0);
