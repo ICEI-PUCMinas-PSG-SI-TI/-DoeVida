@@ -1,32 +1,99 @@
-.carousel{
+#carouselBanner {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+.carousel-item {
+    height: 500px;
+    position: relative;
+}
+
+
+.carousel-item img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.carousel-item img{
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-    margin-top: 20px;
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
 }
 
-#carouselDoeVida{
-    width: 100%;
-    margin: 0;
+.carousel-caption {
+    z-index: 2;
+    text-align: left;
+    left: 55%;
+    bottom: 25%;
+    transform: translateX(-10%);
 }
-@media (min-width: 992px){
 
-    .carousel-item img{
-        max-height: 457px;
-        object-fit: contain;
-        margin-top: 20px;
-        border-radius: 16px;
-    }
-
+.carousel-caption h2 {
+    font-size: 3rem;
+    font-weight: 700;
 }
+
+.carousel-caption p {
+    max-width: 450px;
+    font-size: 1.3rem;
+}
+
+.btn-saiba-mais {
+    background: #1F2C4D;;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 600;
+}
+
+.btn-saiba-mais:hover {
+    background: #1F2C4D;;
+    color: white;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+}
+
+.carousel-indicators button {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50%;
+}
+
 .carousel-indicators button{
     background-color: black !important;
 }
+
+.card-animal{
+    border: none !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card-animal:hover{
+    transform: translateY(-5px);
+}
+
+.card-animal img{
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-title{
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1F2C4D; ;
+}
+
+
 
 h1{
     text-align: center;
@@ -39,56 +106,6 @@ h1{
     font-family: 'Poppins' , sans-serif;
 }
 
-#noticia-t {
-    font-size: 0.85rem;
-    color: #6c757d;
-    font-weight: 400;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    font-family: 'Poppins' , sans-serif;
-     
-}
-.card-noticia{
-    max-width: 260px;
-    height: 500px !important; 
-    margin: 20px auto;
-    border-radius: 12px;
-    border: 0.8px solid #1F2C4D;
-    background-color: white;
-
-    display: flex;
-    flex-direction: column;
-}
-.card-noticia img {
-    border-radius: 12px;
-    padding: 5px;
-
-}
-
-.card-text{
-    text-align: left;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-}
-
-.card-body{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-#bt-card1{
-    margin-top: 55px;
-}
-
-.btn-ver-mais{
-    background-color: #d34235;
-    margin-top: auto;
-    align-self: flex-start;
-}
-
-.btn-ver-mais{
-    margin-top: auto;
-    align-self: flex-end;
-}
 @media (max-width: 576px){
 
     .btn-ver-mais{
@@ -110,3 +127,11 @@ h1{
     }
 
 }
+
+.btn-verMais{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
