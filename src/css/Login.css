@@ -1,0 +1,31 @@
+.bloco-de-login{
+   display: grid;
+   justify-items: center;
+   
+}
+.primeiraMensagem{
+    text-align: center;
+}
+
+.segundaMensagemen{
+    text-align: center;
+}
+
+.form-label{
+    color: rgb(160, 35, 35);
+}
+.theme-secondary {
+    color: rgb(61, 6, 6);
+}
+.lead{
+    text-align: center;
+}
+.mensagem-erro {
+    color: red;
+    font-size: 14px;
+}
+
+.mensagem-sucesso {
+    color: green;
+    font-size: 14px;
+}
