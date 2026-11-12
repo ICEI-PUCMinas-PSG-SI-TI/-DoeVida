@@ -13,14 +13,14 @@
 }
 
 .bem-vindo{
-    color: #5e161f;
+    color: black;
     text-decoration: underline;
     text-align: center;
 }
 
 .descrição{
     text-align: center;
-    color: #5e161f;
+    color: rgb(60, 59, 59);
 }
 
 .icon-calendario {
