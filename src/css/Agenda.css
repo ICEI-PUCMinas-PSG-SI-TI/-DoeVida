@@ -13,14 +13,16 @@
 }
 
 .bem-vindo{
-    color: black;
-    text-decoration: underline;
-    text-align: center;
+   color: #1F2C4D;
+    
+    right: 180px;
+    margin: 27px ;
 }
 
 .descrição{
-    text-align: center;
-    color: rgb(60, 59, 59);
+    margin: 27px;
+    color: #555;
+    right: 100px;
 }
 
 .icon-calendario {
@@ -40,6 +42,7 @@
 .titulo-agenda {
     color: #1F2C4D;
     margin-bottom: 5px;
+    
 }
 
 .texto-agenda {
