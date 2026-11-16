@@ -1,5 +1,23 @@
+function verificarLogin() {
+
+    const usuario = JSON.parse(
+        localStorage.getItem("usuarioLogado")
+    );
+
+    if (!usuario) {
+
+        window.location.href = "Login.html";
+        return null;
+    }
+
+    return usuario;
+}
+
+const usuario = verificarLogin();
+
+
 const TESTAR_DOADOR = false;
-const TESTAR_HEMOCENTRO = true;
+const TESTAR_HEMOCENTRO = false;
 
 const LIMITE_IMAGEM = 2 * 1024 * 1024;
 const LIMITE_DESCRICAO = 160;

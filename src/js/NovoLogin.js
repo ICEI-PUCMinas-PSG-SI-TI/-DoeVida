@@ -5,83 +5,118 @@ const campoSenha = document.getElementById("exampleMenuFormPassword1");
 const formulario = document.getElementById("formLogin");
 
 if (!tipoUsuario || !campoCPF || !campoCNPJ || !campoSenha || !formulario) {
-    console.error("Erro: algum elemento do Login não foi encontrado no HTML.");
+
+    console.error(
+        "Erro: algum elemento do Login não foi encontrado no HTML."
+    );
+
 } else {
 
     campoCPF.style.display = "none";
     campoCNPJ.style.display = "none";
 
-    tipoUsuario.addEventListener("change", function() {
+    tipoUsuario.addEventListener("change", function () {
 
         campoCPF.style.display = "none";
         campoCNPJ.style.display = "none";
 
         if (tipoUsuario.value === "doador") {
-            campoCPF.style.display = "block";
-        }
 
-        else if (tipoUsuario.value === "hemocentro") {
+            campoCPF.style.display = "block";
+
+        } else if (tipoUsuario.value === "hemocentro") {
+
             campoCNPJ.style.display = "block";
         }
-
     });
 
-    formulario.addEventListener("submit", function(event) {
+    formulario.addEventListener("submit", function (event) {
 
         event.preventDefault();
 
         if (tipoUsuario.value === "") {
+
             alert("Selecione o tipo de usuário!");
+            return;
         }
 
-        else if (tipoUsuario.value === "doador" && campoCPF.value.trim() === "") {
+        if (
+            tipoUsuario.value === "doador" &&
+            campoCPF.value.trim() === ""
+        ) {
+
             alert("Digite seu CPF!");
+            return;
         }
 
-        else if (tipoUsuario.value === "hemocentro" && campoCNPJ.value.trim() === "") {
+        if (
+            tipoUsuario.value === "hemocentro" &&
+            campoCNPJ.value.trim() === ""
+        ) {
+
             alert("Digite seu CNPJ!");
+            return;
         }
 
-        else if (campoSenha.value.trim() === "") {
+        if (campoSenha.value.trim() === "") {
+
             alert("Digite sua senha!");
+            return;
         }
 
-        else {
-            alert("Dados preenchidos! Login pronto para ser conectado ao sistema.");
+        const usuarios = JSON.parse(
+            localStorage.getItem("usuarios")
+        ) || [];
+
+        let usuarioEncontrado = null;
+
+        if (tipoUsuario.value === "doador") {
+
+            usuarioEncontrado = usuarios.find(
+                usuario =>
+                    usuario.cpf === campoCPF.value.trim() &&
+                    usuario.senha === campoSenha.value.trim()
+            );
+
+        } else if (tipoUsuario.value === "hemocentro") {
+
+            usuarioEncontrado = usuarios.find(
+                usuario =>
+                    usuario.cnpj === campoCNPJ.value.trim() &&
+                    usuario.senha === campoSenha.value.trim()
+            );
         }
 
-    });
-}
+        if (usuarioEncontrado) {
 
-const usuarios = JSON.parse(
-    localStorage.getItem("usuarios")
-) || [];
+            localStorage.setItem(
+                "usuarioLogado",
+                JSON.stringify(usuarioEncontrado)
+            );
 
-localStorage.setItem(
-    "usuarioLogado",
-    JSON.stringify(usuarioEncontrado)
-);
+            alert("Login realizado com sucesso!");
 
-function verificarLogin() {
+            if (
+                usuarioEncontrado.tipoUsuario ===
+                "hemocentro"
+                ) {
 
-    const usuario =
-        JSON.parse(
-            localStorage.getItem(
-                "usuarioLogado"
-            )
-        );
+            window.location.href =
+            "HomeHemocentro.html";
 
-    if (!usuario) {
+        } 
+        
+    else {
 
-        window.location.href =
-            "Login.html";
-
-        return null;
-
+    window.location.href =
+        "HomeUsuario.html";
     }
 
-    return usuario;
 
+        }
+        else {
+
+            alert("CPF/CNPJ ou senha inválidos!");
+        }
+    });
 }
-
-const usuario = verificarLogin();

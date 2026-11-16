@@ -9,24 +9,26 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/HomeUsuario.css">
     <link rel="stylesheet" href="../css/Agenda.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
     <header>
         <nav class="navbar navbar-dark">
+
             <div class="container-fluid">
 
                 <a href="HomeUsuario.html">
-                    <img class="Logo" src="imgs/DoeVida-Logo.png" alt="Logo DoeVida">
+                    <img class="Logo" src="/src/imgs/DoeVida-Logo.png" alt="logo DoeVida">
                 </a>
 
-                <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#menuUsuario">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuUsuario">
 
                     <span class="navbar-toggler-icon"></span>
+
                 </button>
 
             </div>
@@ -37,139 +39,278 @@
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title">Serviços</h5>
 
-                <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="offcanvas">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
                 </button>
             </div>
 
             <div class="offcanvas-body">
+
                 <ul class="nav flex-column">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/src/pages/HomeUsuario.html">Início</a>
+                        <a class="nav-link" href="/src/pages/HomeUsuario.html">
+                            <i class="fa-solid fa-house me-2"></i>
+                            Início
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/src/pages/LocalizarHemocentro.html">Localizar Hemocentro</a>
+                        <a class="nav-link" href="/src/pages/ComoDoar.html">
+                            <i class="fa-solid fa-hand-holding-heart me-2"></i>
+                            Como Doar
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/src/pages/Agendamento.html">Agendamento</a>
+                        <a class="nav-link" href="/src/pages/MitosVerdades.html">
+                            <i class="fa-solid fa-circle-question me-2"></i>
+                            Mitos e Verdades
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/src/pages/Agenda.html">Sua Agenda</a>
+                        <a class="nav-link" href="/src/pages/LocalizarHemocentro.html">
+                            <i class="fa-solid fa-location-dot me-2"></i>
+                            Localizar Hemocentro
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/src/pages/Campanhas.html">Campanhas</a>
+                        <a class="nav-link" href="/src/pages/Agendamento.html">
+                            <i class="fa-solid fa-calendar-check me-2"></i>
+                            Agendamento
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/src/pages/ContaUsuario.html">Minha Conta</a>
+                        <a class="nav-link" href="/src/pages/Agenda.html">
+                            <i class="fa-solid fa-calendar-days me-2"></i>
+                            Sua Agenda
+                        </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/pages/Historico.html">
+                            <i class="fa-solid fa-clock-rotate-left me-2"></i>
+                            Histórico de Doação
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/pages/SistemasBeneficios.html">
+                            <i class="fa-solid fa-gift me-2"></i>
+                            Sistema de Benefícios
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/pages/Fidelizacao.html">
+                            <i class="fa-solid fa-medal me-2"></i>
+                            Fidelização
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/pages/Campanhas.html">
+                            <i class="fa-solid fa-bullhorn me-2"></i>
+                            Campanhas
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/pages/ContaUsuario.html">
+                            <i class="fa-solid fa-user me-2"></i>
+                            Minha Conta
+                        </a>
+                    </li>
+
+
+
 
                 </ul>
+
             </div>
         </div>
-    </header>
+    
 
-    <div class="começo">
-        <h1 class="bem-vindo">𝐁𝐞𝐦-𝐯𝐢𝐧𝐝𝐨 à 𝐬𝐮𝐚 𝐚𝐠𝐞𝐧𝐝𝐚!</h1>
-        <p></p>
-        <h3 class="descrição">𝐀𝐪𝐮𝐢 𝐯𝐨𝐜ê 𝐚𝐜𝐨𝐦𝐩𝐚𝐧𝐡𝐚 𝐬𝐮𝐚𝐬 𝐝𝐨çõ𝐚𝐞𝐬 𝐞 𝐩𝐫ó𝐱𝐢𝐦𝐨𝐬 𝐚𝐠𝐞𝐧𝐝𝐚𝐦𝐞𝐧𝐭𝐨𝐬</h3>
+<main class="container agenda-container">
+
+    <div class="comeco">
+
+        <h1 class="bem-vindo">
+            Gerencie seus compromissos
+        </h1>
+
+        <h3 class="descricao">
+            Acompanhe seus agendamentos e mantenha seus lembretes organizados.
+        </h3>
+
     </div>
-    <main class="container agenda-container">
 
-        <div class="agenda-cabecalho">
+    <div class="agenda-cabecalho">
 
-            <img
-                src="src/imgs/icon-calendario.jpg"
-                class="icon-calendario"
-                alt="Ícone de calendário">
+        <div class="agenda-cabecalho-texto">
 
-            <div class="agenda-cabecalho-texto">
-                <h1 class="titulo-agenda">Minha Agenda</h1>
-                <p class="texto-agenda">
-                    Veja seus lembretes de doação.
-                </p>
+            <h1 class="titulo-agenda">
+                Minha Agenda
+            </h1>
+
+            <p class="texto-agenda">
+                Organize seus compromissos de forma simples.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mb-4">
+
+        <button
+            class="btn btn-danger btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#modalLembrete">
+
+            + Novo Lembrete
+
+        </button>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+
+            <div class="card-agenda">
+
+                <h2>
+                    Meus Lembretes
+                </h2>
+
+                <div id="listaLembretes">
+
+                    <p class="mensagem-vazia">
+
+                        Você ainda não possui lembretes.
+
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
 
-        <section class="lembretes">
+        <div class="col-lg-6">
 
-            <h2>Novo lembrete</h2>
+            <div class="card-agenda">
 
-            <form id="formLembrete">
+                <h2>
+                    Próximos Agendamentos
+                </h2>
 
-                <div class="mb-3">
-                    <label for="dataLembrete" class="form-label">
-                        Data
-                    </label>
+                <div id="listaProximosAgendamentos">
 
-                    <input
-                        type="date"
-                        class="form-control form-control-lg"
-                        id="dataLembrete"
-                        required>
+                    <p class="mensagem-vazia">
+
+                        Nenhum agendamento encontrado.
+
+                    </p>
+
                 </div>
 
-                <div class="mb-3">
-                    <label for="tituloLembrete" class="form-label">
-                        O que você precisa lembrar?
-                    </label>
+            </div>
 
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="tituloLembrete"
-                        placeholder="Ex.: Doação de sangue"
-                        required>
-                </div>
+        </div>
 
-                <div class="mb-3">
-                    <label for="horaLembrete" class="form-label">
-                        Horário
-                    </label>
+    </div>
 
-                    <input
-                        type="time"
-                        class="form-control"
-                        id="horaLembrete"
-                        required>
-                </div>
+</main>
+<div
+    class="modal fade"
+    id="modalLembrete"
+    tabindex="-1">
 
-                <button type="submit" class="btn btn-danger">
-                    Adicionar lembrete
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Novo Lembrete
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
                 </button>
-                
-                
 
-            </form>
-
-            <h2 class="titulo-lista">Meus lembretes</h2>
-
-            <div id="listaLembretes">
-                <p class="mensagem-vazia">
-                    Você ainda não tem lembretes cadastrados.
-                </p>
             </div>
 
-             <h2>Próximos Agendamentos</h2>
+            <div class="modal-body">
 
-    <div id="listaProximosAgendamentos">
+                <form id="formLembrete">
 
-        <p class="mensagem-vazia">
-            Carregando seus agendamentos...
-        </p>
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Data
+                        </label>
+
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="dataLembrete"
+                            required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Lembrete
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="tituloLembrete"
+                            required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Horário
+                        </label>
+
+                        <input
+                            type="time"
+                            class="form-control"
+                            id="horaLembrete"
+                            required>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger w-100">
+
+                        Salvar Lembrete
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
 
     </div>
 
-        </section>
-
-    </main>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/Agenda.js"></script>

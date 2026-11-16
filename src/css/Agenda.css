@@ -1,68 +1,123 @@
-.agenda-container {
-    margin-top: 40px;
-    margin-bottom: 50px;
-}
+.icone-agenda {
+    width: 90px;
+    height: 90px;
+    background-color: #A61B1B;
+    border-radius: 50%;
 
-
-.agenda-cabecalho {
-    position: relative;
     display: flex;
     align-items: center;
-    min-height: 120px;
-    margin-bottom: 30px;
+    justify-content: center;
+
+    color: white;
+    font-size: 40px;
 }
 
-.bem-vindo{
-    color: #5e161f;
-    text-decoration: underline;
-    text-align: center;
+.card-agenda {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    border: 2px solid #d8dee8;
+
+    box-shadow:
+        0 6px 15px rgba(
+            31,
+            44,
+            77,
+            0.12
+        );
+
+    height: 100%;
+
+    transition: all .3s ease;
 }
 
-.descrição{
-    text-align: center;
-    color: #5e161f;
-}
+.lembrete-item {
 
-.icon-calendario {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
+    border: 1px solid #d8dee8;
 
-
-.agenda-cabecalho-texto {
-    padding-left: 120px;
-}
-
-.titulo-agenda {
-    color: #1F2C4D;
-    margin-bottom: 5px;
-}
-
-.texto-agenda {
-    color: #555;
-}
-
-.lembretes {
-    background-color: white;
-    padding: 30px;
     border-radius: 12px;
-    margin-top: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    background-color: #fafafa;
 }
 
-.lembretes h2 {
+.card-agenda h2 {
     color: #1F2C4D;
     margin-bottom: 20px;
 }
 
-.titulo-lista {
-    margin-top: 35px;
+.bem-vindo {
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.mensagem-vazia {
-    color: #777;
+.descricao {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
 }
+
+.lembrete-item {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.lembrete-item h3 {
+    color: #1F2C4D;
+    font-size: 1.2rem;
+}
+
+.comeco {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bem-vindo {
+    color: #1F2C4D;
+    font-family: 'Poppins' , sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.agenda-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    
+}
+
+.agenda-cabecalho-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo-agenda {
+    margin-bottom: 5px;
+    color: #1F2C4D;
+
+}
+
+.texto-agenda {
+    margin: 0;
+   color: #1F2C4D;
+}
+
