@@ -13,7 +13,9 @@ function verificarLogin() {
         window.location.href =
             "Login.html";
 
-        return null;
+        localStorage.removeItem(
+            "usuarioLogado"
+        );
 
     }
 
@@ -24,45 +26,109 @@ function verificarLogin() {
 const usuario = verificarLogin();
 
 
+function obterUsuarioAtualizado() {
+
+    const usuarioLogado = JSON.parse(
+        localStorage.getItem(
+            "usuarioLogado"
+        )
+    );
+
+    const usuarios = JSON.parse(
+        localStorage.getItem(
+            "usuarios"
+        )
+    ) || [];
+
+    return usuarios.find(
+        usuario =>
+            usuario.id === usuarioLogado.id
+    ) || usuarioLogado;
+}
 
 function carregarDadosUsuario() {
 
-    document.getElementById("bem-vindo-usuario").textContent = 
-        "Olá, " + usuario.nome + "!";
+    const usuarioAtual =
+        obterUsuarioAtualizado();
 
-    document.getElementById("nomeUsuario").textContent =
-        usuario.nome;
+    document.getElementById(
+        "bem-vindo-usuario"
+    ).textContent =
+        "Olá, " +
+        usuarioAtual.nome +
+        "!";
 
-    document.getElementById("emailUsuario").textContent =
-        usuario.email;
+    document.getElementById(
+        "nomeUsuario"
+    ).textContent =
+        usuarioAtual.nome;
 
-    document.getElementById("telefoneUsuario").textContent =
-        usuario.telefone;
+    document.getElementById(
+        "emailUsuario"
+    ).textContent =
+        usuarioAtual.email;
 
-    document.getElementById("cpfUsuario").textContent =
-        usuario.cpf;
+    document.getElementById(
+        "telefoneUsuario"
+    ).textContent =
+        usuarioAtual.telefone;
 
-    document.getElementById("dataNascimentoUsuario").textContent =
-        usuario.dataNascimento;
+    document.getElementById(
+        "cpfUsuario"
+    ).textContent =
+        usuarioAtual.cpf;
 
-  
+    document.getElementById(
+        "dataNascimentoUsuario"
+    ).textContent =
+        usuarioAtual.dataNascimento;
 
+    document.getElementById(
+        "tipoSanguineoUsuario"
+    ).textContent =
+        "🩸 " +
+        usuarioAtual.tipoSanguineo;
+
+        document.getElementById(
+        "tipoSanguineoDoacao"
+        ).textContent =
+        usuarioAtual.tipoSanguineo;
+
+    if (
+        usuarioAtual.fotoPerfil
+    ) {
+
+        document.getElementById(
+            "fotoPerfilUsuario"
+        ).src =
+            usuarioAtual.fotoPerfil;
+    }
 }
 
 function preencherFormulario() {
 
-    document.getElementById("inputNome").value =
-        usuario.nome;
+    const usuarioAtual =
+        obterUsuarioAtualizado();
 
-    document.getElementById("inputEmail").value =
-        usuario.email;
+    document.getElementById(
+        "inputNome"
+    ).value =
+        usuarioAtual.nome;
 
-    document.getElementById("inputTelefone").value =
-        usuario.telefone;
+    document.getElementById(
+        "inputEmail"
+    ).value =
+        usuarioAtual.email;
 
-    document.getElementById("inputNascimento").value =
-        usuario.dataNascimento;
+    document.getElementById(
+        "inputTelefone"
+    ).value =
+        usuarioAtual.telefone;
 
+    document.getElementById(
+        "inputNascimento"
+    ).value =
+        usuarioAtual.dataNascimento;
 }
 
 function salvarPerfil() {
@@ -95,6 +161,34 @@ function salvarPerfil() {
 
     modal.hide();
 
+    let usuarios = JSON.parse(
+        localStorage.getItem(
+            "usuarios"
+        )
+    ) || [];
+
+    usuarios = usuarios.map(
+        usuarioLista => {
+
+            if (
+                usuarioLista.id ===
+                usuario.id
+            ) {
+
+                return usuario;
+            }
+
+            return usuarioLista;
+        }
+    );
+
+    localStorage.setItem(
+        "usuarios",
+        JSON.stringify(
+            usuarios
+        )
+    );
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -118,30 +212,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function validarSenha (){
+function validarSenha() {
 
     let senhaDigitada = document.getElementById("inputSenhaAtual").value;
 
-    
-    if (senhaDigitada === usuario.senha){
+
+    if (senhaDigitada === usuario.senha) {
         return true;
     }
-      
-    else{
+
+    else {
         return false;
     }
-        
+
 }
 
-function confirmarSenha (){
+function confirmarSenha() {
     let novaSenha = document.getElementById("inputNovaSenha").value;
     let senhaConfirmada = document.getElementById("inputConfirmarSenha").value;
 
-    if (novaSenha === senhaConfirmada){
+    if (novaSenha === senhaConfirmada) {
         return true;
     }
 
-    else{
+    else {
         return false;
     }
 
@@ -179,6 +273,34 @@ function salvarSenha() {
         JSON.stringify(usuario)
     );
 
+    let usuarios = JSON.parse(
+        localStorage.getItem(
+            "usuarios"
+        )
+    ) || [];
+
+    usuarios = usuarios.map(
+        usuarioLista => {
+
+            if (
+                usuarioLista.id ===
+                usuario.id
+            ) {
+
+                return usuario;
+            }
+
+            return usuarioLista;
+        }
+    );
+
+    localStorage.setItem(
+        "usuarios",
+        JSON.stringify(
+            usuarios
+        )
+    );
+
     limparCamposSenha();
     const modalElement =
         document.getElementById("modalAlterarSenha");
@@ -204,42 +326,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function validarSenhaExclusao (){
-      let senhaDigitada = document.getElementById("inputSenha").value;
+function validarSenhaExclusao() {
+    let senhaDigitada = document.getElementById("inputSenha").value;
 
-    
-    if (senhaDigitada === usuario.senha){
+
+    if (senhaDigitada === usuario.senha) {
         return true;
     }
-      
-    else{
+
+    else {
         return false;
     }
-        
+
 }
 
-function excluirConta(){
+function excluirConta() {
 
-    if (!validarSenhaExclusao()){
+    if (!validarSenhaExclusao()) {
         alert("Senha incorreta.");
         return;
     }
 
-        localStorage.removeItem("usuarioLogado")
-        usuario = null;
+    localStorage.removeItem("usuarioLogado")
+    usuario = null;
 
-        const modalElement =
+    const modalElement =
         document.getElementById("modalExcluirConta");
 
-        const modal =
+    const modal =
         bootstrap.Modal.getInstance(modalElement);
 
-        modal.hide();
+    modal.hide();
 
-         alert("Conta excluída com sucesso.");
+    alert("Conta excluída com sucesso.");
 
-        window.location.href = "index.html";
-    
+    window.location.href = "index.html";
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {

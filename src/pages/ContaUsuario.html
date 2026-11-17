@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoeVida</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/ContaUsuario.css">
     <script src="../js/ContaUsuario.js"></script>
-    
-    
+
+
 </head>
+
 <body>
-    
+
     <header>
         <nav class="navbar navbar-dark">
 
@@ -132,620 +133,563 @@
             </div>
         </div>
 
-<main class="container mt-5">
+        <main class="container mt-5">
 
-    <h1 class="fw-bold">Minha Conta</h1>
+            <h1 class="fw-bold">Minha Conta</h1>
 
-    <p class="text-secondary">
-        Gerencie seus dados pessoais e preferências.
-    </p>
+            <p class="text-secondary">
+                Gerencie seus dados pessoais e preferências.
+            </p>
 
-    <div class="card mt-4">
+            <div class="card mt-4">
 
-        <div class="card-body">
+                <div class="card-body">
 
-            <div class="row align-items-center">
+                    <div class="row align-items-center">
 
-                <div class="col-12 col-md-2 text-center">
+                        <div class="col-12 col-md-3 text-center">
 
-                    <img
-                        src="../imgs/Foto-Perfil.png"
-                        alt="Foto de Perfil"
-                        class="img-fluid foto-perfil">
+                            <img
+                                id="fotoPerfilUsuario"
+                                class="foto-perfil"
+                                src="/src/imgs/Foto-Perfil.png"
+                                alt="Foto de perfil">
+
+                        </div>
+
+                        <div class="col-12 col-md-6">
+
+                            <h2 class="fw-bold" id="bem-vindo-usuario">
+                                Olá, Ana!
+                            </h2>
+
+                            <span class="badge bg-success">
+                                Doadora cadastrada
+                            </span>
+
+                            <span id="tipoSanguineoUsuario" class="badge bg-danger">
+                            </span>
+
+
+                        </div>
+
+                        <div class="col-12 col-md-3 text-md-end mt-3 mt-md-0">
+
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEditarPerfil">
+
+                                Editar Perfil
+
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row g-4 mt-4">
+
+
+                <div class="col-12 col-md-6">
+
+                    <div class="card h-100">
+
+                        <div class="card-body p-4">
+                            <h3 class="titulo-card mb-4">
+                                <i class="bi bi-person"></i>
+                                Dados pessoais
+                            </h3>
+
+                            <div class="info-item">
+                                <i class="fa-solid fa-user"></i>
+
+                                <div>
+                                    <p class="titulo-info">Nome</p>
+                                    <p class="valor-info" id="nomeUsuario">Ana Clara Santos</p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="info-item">
+                                <i class="fa-solid fa-envelope"></i>
+
+                                <div>
+                                    <p class="titulo-info">E-mail</p>
+                                    <p class="valor-info" id="emailUsuario">ana.clara@email.com</p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="info-item">
+                                <i class="fa-solid fa-calendar"></i>
+
+                                <div>
+                                    <p class="titulo-info">Data de nascimento</p>
+                                    <p class="valor-info" id="dataNascimentoUsuario">14/05/2008</p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="info-item">
+                                <i class="fa-solid fa-clipboard"></i>
+
+                                <div>
+                                    <p class="titulo-info">CPF</p>
+                                    <p class="valor-info" id="cpfUsuario">***.***.***-**</p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="info-item">
+                                <i class="fa-solid fa-phone"></i>
+
+                                <div>
+                                    <p class="titulo-info">Telefone</p>
+                                    <p class="valor-info" id="telefoneUsuario">(31) 98765-4321</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
                 <div class="col-12 col-md-6">
 
-                 <h2 class="fw-bold" id="bem-vindo-usuario">
-                    Olá, Ana!
-                </h2>
+                    <div class="card h-100">
 
-                    <span class="badge bg-success">
-                    Doadora cadastrada
-                    </span>
+                        <div class="card-body p-4">
 
-                <div class="mt-2">
-                <span class="badge bg-danger">
-                  🩸 O+
-                 </span>
-                </div>
+                            <h3 class="titulo-card mb-4">
+                                <i class="bi bi-droplet text-danger"></i>
+                                Informações de doação
+                            </h3>
 
-                </div>
+                            <div class="info-item">
 
-                <div class="col-12 col-md-3 text-md-end mt-3 mt-md-0">
+                                <i class="fa-solid fa-droplet"></i>
 
-                    <button
-                    class="btn btn-danger"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalEditarPerfil">
+                                <div>
+                                    <p class="titulo-info">
+                                        Tipo sanguíneo
+                                    </p>
 
-                        Editar Perfil
+                                    <p
+                                        class="valor-info"
+                                        id="tipoSanguineoDoacao">
+                                    </p>
+                                </div>
 
-                    </button>
-                </div>
+                            </div>
 
-            </div>
+                            <hr>
 
-        </div>
+                            <div class="info-item">
 
-    </div>
+                                <i class="fa-solid fa-calendar"></i>
 
-   <div class="row g-4 mt-4">
+                                <div>
+                                    <p class="titulo-info">
+                                        Última doação
+                                    </p>
 
+                                    <p class="valor-info">
+                                        12 de março de 2025
+                                    </p>
+                                </div>
 
-    <div class="col-12 col-md-6">
+                            </div>
 
-        <div class="card h-100">
+                            <hr>
 
-            <div class="card-body p-4">
-                <h3 class="titulo-card mb-4">
-                    <i class="bi bi-person"></i>
-                    Dados pessoais
-                </h3>
+                            <div class="info-item">
 
-                <div class="info-item">
-                    <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-shield-halved"></i>
 
-                    <div>
-                        <p class="titulo-info">Nome</p>
-                        <p class="valor-info" id="nomeUsuario">Ana Clara Santos</p>
-                    </div>
-                </div>
+                                <div>
 
-                <hr>
+                                    <p class="titulo-info">
+                                        Situação de elegibilidade
+                                    </p>
 
-                <div class="info-item">
-                    <i class="fa-solid fa-envelope"></i>
+                                    <span class="badge bg-success-subtle text-success">
+                                        ✓ Apta para doar
+                                    </span>
 
-                    <div>
-                        <p class="titulo-info">E-mail</p>
-                        <p class="valor-info" id="emailUsuario">ana.clara@email.com</p>
-                    </div>
-                </div>
+                                </div>
 
-                <hr>
+                            </div>
 
-                <div class="info-item">
-                   <i class="fa-solid fa-calendar"></i>
+                            <div class="d-grid mt-4">
 
-                    <div>
-                        <p class="titulo-info">Data de nascimento</p>
-                        <p class="valor-info" id="dataNascimentoUsuario">14/05/2008</p>
-                    </div>
-                </div>
+                                <button class="btn btn-danger">
 
-                <hr>
+                                    <i class="bi bi-calendar-check me-2"></i>
 
-                <div class="info-item">
-                    <i class="fa-solid fa-clipboard"></i>
+                                    Ver histórico de doações
 
-                    <div>
-                        <p class="titulo-info">CPF</p>
-                        <p class="valor-info" id="cpfUsuario">***.***.***-**</p>
-                    </div>
-                </div>
+                                </button>
 
-                <hr>
+                            </div>
 
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-
-                    <div>
-                        <p class="titulo-info">Telefone</p>
-                        <p class="valor-info" id="telefoneUsuario">(31) 98765-4321</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-12 col-md-6">
-
-        <div class="card h-100">
-
-            <div class="card-body p-4">
-
-                <h3 class="titulo-card mb-4">
-                    <i class="bi bi-droplet text-danger"></i>
-                    Informações de doação
-                </h3>
-
-                <div class="info-item">
-
-                    <i class="fa-solid fa-droplet"></i>
-
-                    <div>
-                        <p class="titulo-info">
-                            Tipo sanguíneo
-                        </p>
-
-                        <p class="valor-info">
-                            O+
-                        </p>
-                    </div>
-
-                </div>
-
-                <hr>
-
-                <div class="info-item">
-
-                    <i class="fa-solid fa-calendar"></i>
-
-                    <div>
-                        <p class="titulo-info">
-                            Última doação
-                        </p>
-
-                        <p class="valor-info">
-                            12 de março de 2025
-                        </p>
-                    </div>
-
-                </div>
-
-                <hr>
-
-                <div class="info-item">
-
-                    <i class="fa-solid fa-shield-halved"></i>
-
-                    <div>
-
-                        <p class="titulo-info">
-                            Situação de elegibilidade
-                        </p>
-
-                        <span class="badge bg-success-subtle text-success">
-                            ✓ Apta para doar
-                        </span>
+                        </div>
 
                     </div>
 
                 </div>
 
-                <div class="d-grid mt-4">
+            </div>
 
-                    <button class="btn btn-danger">
+            <div class="card mt-4">
 
-                        <i class="bi bi-calendar-check me-2"></i>
+                <div class="card-body p-4">
 
-                        Ver histórico de doações
+                    <h3 class="titulo-card mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Segurança e conta
+                    </h3>
 
-                    </button>
+
+                    <div class="item-seguranca">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <div>
+
+                                <h5 class="mb-1">
+                                    Alterar senha
+                                </h5>
+
+                                <p class="descricao-item mb-0">
+                                    Mantenha sua conta segura com uma senha forte.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal"
+                            data-bs-target="#modalAlterarSenha">
+
+                            Alterar senha
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="item-seguranca">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <i class="fa-solid fa-bell"></i>
+
+                            <div>
+
+                                <h5 class="mb-1">
+                                    Privacidade e notificações
+                                </h5>
+
+                                <p class="descricao-item mb-0">
+                                    Escolha como e quando deseja receber nossas comunicações.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-outline-secondary">
+                            Configurações
+                        </button>
+
+                    </div>
+
+
+                    <div class="item-seguranca item-perigo">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                            <div>
+
+                                <h5 class="mb-1 text-danger">
+                                    Excluir conta
+                                </h5>
+
+                                <p class="descricao-item text-danger mb-0">
+                                    Esta ação é irreversível. Todos os seus dados serão removidos.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal"
+                            data-bs-target="#modalExcluirConta">
+
+                            Excluir conta
+
+                        </button>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <div class="modal fade" id="modalEditarPerfil">
 
-    </div>
+                <div class="modal-dialog">
 
-</div>
+                    <div class="modal-content">
 
-<div class="card mt-4">
+                        <div class="modal-header">
 
-    <div class="card-body p-4">
+                            <h5 class="modal-title">
+                                Editar Perfil
+                            </h5>
 
-        <h3 class="titulo-card mb-4">
-            <i class="fa-solid fa-shield-halved"></i>
-            Segurança e conta
-        </h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
 
-  
-        <div class="item-seguranca">
+                        </div>
 
-            <div class="d-flex align-items-center gap-3">
+                        <div class="modal-body">
 
-                <i class="fa-solid fa-lock"></i>
+                            <form id="formEditarPerfil">
 
-                <div>
+                                <div class="mb-3">
 
-                    <h5 class="mb-1">
-                        Alterar senha
-                    </h5>
+                                    <label class="form-label">
+                                        Nome
+                                    </label>
 
-                    <p class="descricao-item mb-0">
-                        Mantenha sua conta segura com uma senha forte.
-                    </p>
+                                    <input type="text" class="form-control" id="inputNome">
 
-                </div>
+                                </div>
 
-            </div>
+                                <div class="mb-3">
 
-           <button
-                class="btn btn-outline-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#modalAlterarSenha">
+                                    <label class="form-label">
+                                        E-mail
+                                    </label>
 
-                Alterar senha
+                                    <input type="email" class="form-control" id="inputEmail">
 
-            </button>
+                                </div>
 
-        </div>
+                                <div class="mb-3">
 
-  
-        <div class="item-seguranca">
+                                    <label class="form-label">
+                                        Telefone
+                                    </label>
 
-            <div class="d-flex align-items-center gap-3">
+                                    <input type="text" class="form-control" id="inputTelefone">
 
-               <i class="fa-solid fa-bell"></i>
+                                </div>
 
-                <div>
+                                <div class="mb-3">
 
-                    <h5 class="mb-1">
-                        Privacidade e notificações
-                    </h5>
+                                    <label class="form-label">
+                                        Data de nascimento
+                                    </label>
 
-                    <p class="descricao-item mb-0">
-                        Escolha como e quando deseja receber nossas comunicações.
-                    </p>
+                                    <input type="date" class="form-control" id="inputNascimento">
 
-                </div>
+                                </div>
 
-            </div>
+                            </form>
 
-            <button class="btn btn-outline-secondary">
-                Configurações
-            </button>
+                        </div>
 
-        </div>
+                        <div class="modal-footer">
 
-  
-        <div class="item-seguranca item-perigo">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 
-            <div class="d-flex align-items-center gap-3">
+                                Cancelar
 
-                <i class="fa-solid fa-trash"></i>
+                            </button>
 
-                <div>
+                            <button type="button" class="btn btn-danger" id="btnSalvarPerfil">
 
-                    <h5 class="mb-1 text-danger">
-                        Excluir conta
-                    </h5>
+                                Salvar
 
-                    <p class="descricao-item text-danger mb-0">
-                        Esta ação é irreversível. Todos os seus dados serão removidos.
-                    </p>
+                            </button>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
             </div>
 
-           <button
-                class="btn btn-outline-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#modalExcluirConta">
+            <div class="modal fade" id="modalAlterarSenha">
 
-                Excluir conta
+                <div class="modal-dialog">
 
-            </button>
+                    <div class="modal-content">
 
-        </div>
+                        <div class="modal-header">
 
-    </div>
+                            <h5 class="modal-title">
+                                Alterar Senha
+                            </h5>
 
-</div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
 
-<div class="modal fade" id="modalEditarPerfil">
+                        </div>
 
-    <div class="modal-dialog">
+                        <div class="modal-body">
 
-        <div class="modal-content">
+                            <form id="formAlterarSenha">
 
-            <div class="modal-header">
+                                <div class="mb-3">
 
-                <h5 class="modal-title">
-                    Editar Perfil
-                </h5>
+                                    <label class="form-label">
+                                        Senha Atual
+                                    </label>
 
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
+                                    <input type="password" class="form-control" id="inputSenhaAtual">
 
-            </div>
+                                </div>
 
-            <div class="modal-body">
+                                <div class="mb-3">
 
-    <form id="formEditarPerfil">
+                                    <label class="form-label">
+                                        Nova Senha
+                                    </label>
 
-        <div class="mb-3">
+                                    <input type="password" class="form-control" id="inputNovaSenha">
 
-            <label class="form-label">
-                Nome
-            </label>
+                                </div>
 
-            <input
-                type="text"
-                class="form-control"
-                id="inputNome">
+                                <div class="mb-3">
 
-        </div>
+                                    <label class="form-label">
+                                        Confirmar Senha
+                                    </label>
 
-        <div class="mb-3">
+                                    <input type="password" class="form-control" id="inputConfirmarSenha">
 
-            <label class="form-label">
-                E-mail
-            </label>
-
-            <input
-                type="email"
-                class="form-control"
-                id="inputEmail">
-
-        </div>
-
-        <div class="mb-3">
-
-            <label class="form-label">
-                Telefone
-            </label>
-
-            <input
-                type="text"
-                class="form-control"
-                id="inputTelefone">
-
-        </div>
-
-        <div class="mb-3">
-
-            <label class="form-label">
-                Data de nascimento
-            </label>
-
-            <input
-                type="date"
-                class="form-control"
-                id="inputNascimento">
-
-        </div>
-
-    </form>
-
-</div>
-
-        <div class="modal-footer">
-
-    <button
-        type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal">
-
-        Cancelar
-
-    </button>
-
-    <button
-        type="button"
-        class="btn btn-danger"
-        id="btnSalvarPerfil">
-
-        Salvar
-
-    </button>
-
-</div>
+                                </div>
 
 
-        </div>
 
-    </div>
+                            </form>
 
-</div>
+                        </div>
 
-<div class="modal fade" id="modalAlterarSenha">
+                        <div class="modal-footer">
 
-    <div class="modal-dialog">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 
-        <div class="modal-content">
+                                Cancelar
 
-            <div class="modal-header">
+                            </button>
 
-                <h5 class="modal-title">
-                    Alterar Senha
-                </h5>
+                            <button type="button" class="btn btn-danger" id="btnSalvarSenha">
 
-                 <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
+                                Salvar
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="modal-body">
+            <div class="modal fade" id="modalExcluirConta">
 
-    <form id="formAlterarSenha">
+                <div class="modal-dialog">
 
-        <div class="mb-3">
+                    <div class="modal-content">
 
-            <label class="form-label">
-                Senha Atual
-            </label>
+                        <div class="modal-header">
 
-            <input
-                type="password"
-                class="form-control"
-                id="inputSenhaAtual">
+                            <h5 class="modal-title">
+                                Excluir Conta
+                            </h5>
 
-        </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
 
-        <div class="mb-3">
+                        </div>
 
-            <label class="form-label">
-                Nova Senha
-            </label>
+                        <div class="modal-body">
 
-            <input
-                type="password"
-                class="form-control"
-                id="inputNovaSenha">
+                            <div class="alert alert-danger">
 
-        </div>
+                                <strong>Atenção!</strong>
 
-        <div class="mb-3">
+                                Esta ação não poderá ser desfeita.
 
-            <label class="form-label">
-                Confirmar Senha
-            </label>
+                            </div>
 
-            <input
-                type="password"
-                class="form-control"
-                id="inputConfirmarSenha">
+                            <p class="text-danger fw-bold">
+                                Esta ação é irreversível.
+                            </p>
 
-        </div>
+                            <p>
+                                Tem certeza que deseja excluir sua conta?
 
+                                Esta ação não poderá ser desfeita e todos os seus
+                                dados serão removidos.
+                            </p>
 
+                            <form id="formExcluirConta">
 
-    </form>
+                                <div class="mb-3">
 
-</div>
+                                    <label class="form-label">
+                                        Senha
+                                    </label>
 
-        <div class="modal-footer">
+                                    <input type="password" class="form-control" id="inputSenha">
 
-    <button
-        type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal">
-
-        Cancelar
-
-    </button>
-
-    <button
-        type="button"
-        class="btn btn-danger"
-        id="btnSalvarSenha">
-
-        Salvar
-
-    </button>
-
-</div>
+                                </div>
 
 
-        </div>
+                                <div class="modal-footer">
 
-    </div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 
-</div>
+                                        Cancelar
 
-<div class="modal fade" id="modalExcluirConta">
+                                    </button>
 
-    <div class="modal-dialog">
+                                    <button type="button" class="btn btn-danger" id="btnExcluirConta">
 
-        <div class="modal-content">
+                                        Excluir Conta
 
-            <div class="modal-header">
+                                    </button>
 
-                <h5 class="modal-title">
-                    Excluir Conta
-                </h5>
+                                </div>
 
-                 <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
+                        </div>
 
-            </div>
+                    </div>
 
-            <div class="modal-body">
+                </div>
 
-                <div class="alert alert-danger">
+        </main>
 
-             <strong>Atenção!</strong>
-
-            Esta ação não poderá ser desfeita.
-
-            </div>
-
-             <p class="text-danger fw-bold">
-            Esta ação é irreversível.
-            </p>
-
-            <p>
-                Tem certeza que deseja excluir sua conta?
-
-            Esta ação não poderá ser desfeita e todos os seus
-            dados serão removidos.
-            </p>
-
-    <form id="formExcluirConta">
-
-        <div class="mb-3">
-
-            <label class="form-label">
-                Senha
-            </label>
-
-            <input
-                type="password"
-                class="form-control"
-                id="inputSenha">
-
-        </div>
-
-
-        <div class="modal-footer">
-
-    <button
-        type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal">
-
-        Cancelar
-
-    </button>
-
-    <button
-        type="button"
-        class="btn btn-danger"
-        id="btnExcluirConta">
-
-        Excluir Conta
-
-    </button>
-
-</div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
