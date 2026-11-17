@@ -51,17 +51,20 @@ function carregarDadosUsuario() {
     const usuarioAtual =
         obterUsuarioAtualizado();
 
+    const nomeExibicao =
+        usuarioAtual.tipoUsuario === "hemocentro"
+            ? usuarioAtual.nomeInstituicao
+            : usuarioAtual.nome;
+
     document.getElementById(
         "bem-vindo-usuario"
     ).textContent =
-        "Olá, " +
-        usuarioAtual.nome +
-        "!";
+        "Olá, " + nomeExibicao + "!";
 
     document.getElementById(
         "nomeUsuario"
     ).textContent =
-        usuarioAtual.nome;
+        nomeExibicao;
 
     document.getElementById(
         "emailUsuario"
@@ -73,26 +76,32 @@ function carregarDadosUsuario() {
     ).textContent =
         usuarioAtual.telefone;
 
-    document.getElementById(
-        "cpfUsuario"
-    ).textContent =
-        usuarioAtual.cpf;
-
-    document.getElementById(
-        "dataNascimentoUsuario"
-    ).textContent =
-        usuarioAtual.dataNascimento;
-
-    document.getElementById(
-        "tipoSanguineoUsuario"
-    ).textContent =
-        "🩸 " +
-        usuarioAtual.tipoSanguineo;
+    if (
+        usuarioAtual.tipoUsuario !==
+        "hemocentro"
+    ) {
 
         document.getElementById(
-        "tipoSanguineoDoacao"
+            "cpfUsuario"
         ).textContent =
-        usuarioAtual.tipoSanguineo;
+            usuarioAtual.cpf;
+
+        document.getElementById(
+            "dataNascimentoUsuario"
+        ).textContent =
+            usuarioAtual.dataNascimento;
+
+        document.getElementById(
+            "tipoSanguineoUsuario"
+        ).textContent =
+            "🩸 " +
+            usuarioAtual.tipoSanguineo;
+
+        document.getElementById(
+            "tipoSanguineoDoacao"
+        ).textContent =
+            usuarioAtual.tipoSanguineo;
+    }
 
     if (
         usuarioAtual.fotoPerfil
@@ -103,6 +112,134 @@ function carregarDadosUsuario() {
         ).src =
             usuarioAtual.fotoPerfil;
     }
+
+    if (
+        usuarioAtual.tipoUsuario ===
+        "hemocentro"
+    ) {
+
+        configurarTelaHemocentro(
+            usuarioAtual
+        );
+    }
+}
+
+function configurarTelaHemocentro(usuarioAtual) {
+
+    document.getElementById(
+        "badgeTipoUsuario"
+    ).textContent =
+        "Hemocentro";
+
+    document.getElementById(
+        "badgeTipoUsuario"
+    ).className =
+        "badge bg-primary";
+
+    document.getElementById(
+        "tipoSanguineoUsuario"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "tituloCardInfo"
+    ).textContent =
+        "Informações do Hemocentro";
+
+    document.getElementById(
+        "cpfUsuario"
+    ).textContent =
+        usuarioAtual.cnpj;
+
+    document.querySelector(
+        "#cpfUsuario"
+    ).previousElementSibling.textContent =
+        "CNPJ";
+
+    document.getElementById(
+        "dataNascimentoUsuario"
+    ).textContent =
+        usuarioAtual.dataCadastro;
+
+    document.querySelector(
+        "#dataNascimentoUsuario"
+    ).previousElementSibling.textContent =
+        "Data de cadastro";
+
+    document.getElementById(
+        "conteudoCardInfo"
+    ).innerHTML = `
+    
+        <div class="info-item">
+            <i class="fa-solid fa-building"></i>
+
+            <div>
+                <p class="titulo-info">
+                    Instituição
+                </p>
+
+                <p class="valor-info">
+                    ${usuarioAtual.nomeInstituicao}
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+
+            <div>
+                <p class="titulo-info">
+                    Endereço
+                </p>
+
+                <p class="valor-info">
+                    ${usuarioAtual.rua},
+                    ${usuarioAtual.numero}
+                    -
+                    ${usuarioAtual.bairro}
+                </p>
+
+                <p class="valor-info">
+                    ${usuarioAtual.cidade} -
+                    ${usuarioAtual.estado}
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="info-item">
+            <i class="fa-solid fa-map-pin"></i>
+
+            <div>
+                <p class="titulo-info">
+                    CEP
+                </p>
+
+                <p class="valor-info">
+                    ${usuarioAtual.cep}
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+
+            <div>
+                <p class="titulo-info">
+                    Telefone
+                </p>
+
+                <p class="valor-info">
+                    ${usuarioAtual.telefone}
+                </p>
+            </div>
+        </div>
+    `;
 }
 
 function preencherFormulario() {
@@ -347,8 +484,8 @@ function excluirConta() {
         return;
     }
 
-    localStorage.removeItem("usuarioLogado")
-    usuario = null;
+  localStorage.removeItem(
+    "usuarioLogado");
 
     const modalElement =
         document.getElementById("modalExcluirConta");

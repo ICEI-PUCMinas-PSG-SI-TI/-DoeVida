@@ -163,8 +163,11 @@
                                 Olá, Ana!
                             </h2>
 
-                            <span class="badge bg-success">
+                           <span id="badgeTipoUsuario"
+                                class="badge bg-success">
+
                                 Doadora cadastrada
+
                             </span>
 
                             <span id="tipoSanguineoUsuario" class="badge bg-danger">
@@ -265,86 +268,55 @@
                     <div class="card h-100">
 
                         <div class="card-body p-4">
+                          <h3 class="titulo-card mb-4" id="tituloCardInfo">
+                            Informações de doação
+                        </h3>
 
-                            <h3 class="titulo-card mb-4">
-                                <i class="bi bi-droplet text-danger"></i>
-                                Informações de doação
-                            </h3>
+<div id="conteudoCardInfo">
 
-                            <div class="info-item">
+    <div class="info-item">
+        <i class="fa-solid fa-droplet"></i>
+        <div>
+            <p class="titulo-info">Tipo sanguíneo</p>
+            <p class="valor-info" id="tipoSanguineoDoacao"></p>
+        </div>
+    </div>
 
-                                <i class="fa-solid fa-droplet"></i>
+    <hr>
 
-                                <div>
-                                    <p class="titulo-info">
-                                        Tipo sanguíneo
-                                    </p>
+    <div class="info-item">
+        <i class="fa-solid fa-calendar"></i>
+        <div>
+            <p class="titulo-info">Última doação</p>
+            <p class="valor-info">
+                12 de março de 2025
+            </p>
+        </div>
+    </div>
 
-                                    <p
-                                        class="valor-info"
-                                        id="tipoSanguineoDoacao">
-                                    </p>
-                                </div>
+    <hr>
 
-                            </div>
+    <div class="info-item">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+            <p class="titulo-info">Situação de elegibilidade</p>
 
-                            <hr>
+            <span class="badge bg-success-subtle text-success">
+                ✓ Apta para doar
+            </span>
+        </div>
+    </div>
 
-                            <div class="info-item">
+  <div class="d-grid mt-4">
+    <button class="btn btn-danger">
+        Ver histórico de doações
+    </button>
+</div>
 
-                                <i class="fa-solid fa-calendar"></i>
-
-                                <div>
-                                    <p class="titulo-info">
-                                        Última doação
-                                    </p>
-
-                                    <p class="valor-info">
-                                        12 de março de 2025
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <hr>
-
-                            <div class="info-item">
-
-                                <i class="fa-solid fa-shield-halved"></i>
-
-                                <div>
-
-                                    <p class="titulo-info">
-                                        Situação de elegibilidade
-                                    </p>
-
-                                    <span class="badge bg-success-subtle text-success">
-                                        ✓ Apta para doar
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                            <div class="d-grid mt-4">
-
-                                <button class="btn btn-danger">
-
-                                    <i class="bi bi-calendar-check me-2"></i>
-
-                                    Ver histórico de doações
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+</div> <!-- conteudoCardInfo -->
+</div> <!-- card-body -->
+</div> <!-- card -->
+</div> <!-- col -->
 
             <div class="card mt-4">
 
