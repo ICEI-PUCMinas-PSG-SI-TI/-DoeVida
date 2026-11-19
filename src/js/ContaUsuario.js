@@ -77,9 +77,34 @@ function carregarDadosUsuario() {
         usuarioAtual.telefone;
 
     if (
-        usuarioAtual.tipoUsuario !==
+        usuarioAtual.fotoPerfil
+    ) {
+
+        document.getElementById(
+            "fotoPerfilUsuario"
+        ).src =
+            usuarioAtual.fotoPerfil;
+    }
+
+    if (
+        usuarioAtual.tipoUsuario ===
         "hemocentro"
     ) {
+
+        configurarTelaHemocentro(
+            usuarioAtual
+        );
+
+        configurarMenuHemocentro();
+
+        document.getElementById(
+            "linkLogo"
+        ).href =
+            "/src/pages/HomeHemocentro.html";
+
+    }
+
+    else {
 
         document.getElementById(
             "cpfUsuario"
@@ -101,29 +126,13 @@ function carregarDadosUsuario() {
             "tipoSanguineoDoacao"
         ).textContent =
             usuarioAtual.tipoSanguineo;
-    }
-
-    if (
-        usuarioAtual.fotoPerfil
-    ) {
 
         document.getElementById(
-            "fotoPerfilUsuario"
-        ).src =
-            usuarioAtual.fotoPerfil;
-    }
-
-    if (
-        usuarioAtual.tipoUsuario ===
-        "hemocentro"
-    ) {
-
-        configurarTelaHemocentro(
-            usuarioAtual
-        );
+            "linkLogo"
+        ).href =
+            "/src/pages/HomeUsuario.html";
     }
 }
-
 function configurarTelaHemocentro(usuarioAtual) {
 
     document.getElementById(
@@ -511,3 +520,65 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 });
+
+function configurarMenuHemocentro() {
+
+    const menu =
+        document.getElementById(
+            "menuNavegacao"
+        );
+
+    menu.innerHTML = `
+
+        <li class="nav-item">
+            <a class="nav-link"
+                href="/src/pages/HomeHemocentro.html">
+
+                <i class="fa-solid fa-house me-2"></i>
+                Início
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link"
+                href="/src/pages/PainelHemocentro.html">
+
+                <i class="fa-solid fa-hospital me-2"></i>
+                Painel Hemocentro
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link"
+                href="/src/pages/AgendamentosConfirmados.html">
+
+                <i class="fa-solid fa-calendar-days me-2"></i>
+                Agendamentos
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link"
+                href="/src/pages/Campanhas.html">
+
+                <i class="fa-solid fa-bullhorn me-2"></i>
+                Campanhas
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link"
+                href="/src/pages/ContaUsuario.html">
+
+                <i class="fa-solid fa-user me-2"></i>
+                Minha Conta
+
+            </a>
+        </li>
+
+    `;
+}

@@ -15,6 +15,203 @@ function verificarLogin() {
 
 const usuario = verificarLogin();
 
+function configurarMenuUsuario() {
+
+    const menu =
+        document.getElementById(
+            "menuNavegacao"
+        );
+
+    const linkLogo =
+        document.getElementById(
+            "linkLogo"
+        );
+
+    if (
+        usuario.tipoUsuario ===
+        "hemocentro"
+    ) {
+
+        menu.innerHTML = `
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/HomeHemocentro.html">
+
+                    <i class="fa-solid fa-house me-2"></i>
+                    Início
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/PainelHemocentro.html">
+
+                    <i class="fa-solid fa-hospital me-2"></i>
+                    Painel Hemocentro
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/AgendamentosConfirmados.html">
+
+                    <i class="fa-solid fa-calendar-days me-2"></i>
+                    Agendamentos
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/Campanhas.html">
+
+                    <i class="fa-solid fa-bullhorn me-2"></i>
+                    Campanhas
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/ContaUsuario.html">
+
+                    <i class="fa-solid fa-user me-2"></i>
+                    Minha Conta
+
+                </a>
+            </li>
+
+        `;
+
+        linkLogo.href =
+            "/src/pages/HomeHemocentro.html";
+
+    }
+
+    else {
+
+        menu.innerHTML = `
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/HomeUsuario.html">
+
+                    <i class="fa-solid fa-house me-2"></i>
+                    Início
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/ComoDoar.html">
+
+                    <i class="fa-solid fa-hand-holding-heart me-2"></i>
+                    Como Doar
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/MitosVerdades.html">
+
+                    <i class="fa-solid fa-circle-question me-2"></i>
+                    Mitos e Verdades
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/LocalizarHemocentro.html">
+
+                    <i class="fa-solid fa-location-dot me-2"></i>
+                    Localizar Hemocentro
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/Agendamento.html">
+
+                    <i class="fa-solid fa-calendar-check me-2"></i>
+                    Agendamento
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/Agenda.html">
+
+                    <i class="fa-solid fa-calendar-days me-2"></i>
+                    Sua Agenda
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/Historico.html">
+
+                    <i class="fa-solid fa-clock-rotate-left me-2"></i>
+                    Histórico de Doação
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/SistemasBeneficios.html">
+
+                    <i class="fa-solid fa-gift me-2"></i>
+                    Sistema de Benefícios
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/Fidelizacao.html">
+
+                    <i class="fa-solid fa-medal me-2"></i>
+                    Fidelização
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/Campanhas.html">
+
+                    <i class="fa-solid fa-bullhorn me-2"></i>
+                    Campanhas
+
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="/src/pages/ContaUsuario.html">
+
+                    <i class="fa-solid fa-user me-2"></i>
+                    Minha Conta
+
+                </a>
+            </li>
+
+        `;
+
+        linkLogo.href =
+            "/src/pages/HomeUsuario.html";
+    }
+}
+
 
 const TESTAR_DOADOR = false;
 const TESTAR_HEMOCENTRO = false;
@@ -695,7 +892,7 @@ $("listaCampanhas").addEventListener("click", evento => {
         }
     }
 });
-
+configurarMenuUsuario();
 inicializarCampanhas();
 configurarPermissoes();
 mostrarCampanhas();

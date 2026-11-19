@@ -70,22 +70,38 @@ if (!tipoUsuario || !campoCPF || !campoCNPJ || !campoSenha || !formulario) {
 
         let usuarioEncontrado = null;
 
-        if (tipoUsuario.value === "doador") {
+       if (tipoUsuario.value === "doador") {
 
-            usuarioEncontrado = usuarios.find(
-                usuario =>
-                    usuario.cpf === campoCPF.value.trim() &&
-                    usuario.senha === campoSenha.value.trim()
-            );
+    usuarioEncontrado = usuarios.find(
+        usuario =>
+            usuario.cpf ===
+            campoCPF.value.replace(/\D/g, "") &&
+            usuario.senha === campoSenha.value.trim()
+    );
 
-        } else if (tipoUsuario.value === "hemocentro") {
+}
+else if (tipoUsuario.value === "hemocentro") {
 
-            usuarioEncontrado = usuarios.find(
-                usuario =>
-                    usuario.cnpj === campoCNPJ.value.trim() &&
-                    usuario.senha === campoSenha.value.trim()
-            );
-        }
+    usuarioEncontrado = usuarios.find(
+        usuario =>
+            usuario.cnpj ===
+            campoCNPJ.value.replace(/\D/g, "") &&
+            usuario.senha === campoSenha.value.trim()
+    );
+
+}
+console.log("Tipo:", tipoUsuario.value);
+
+console.log("CPF digitado:",
+    campoCPF.value.replace(/\D/g, "")
+);
+
+console.log("Senha digitada:",
+    campoSenha.value.trim()
+);
+
+console.log("Usuarios:");
+console.log(usuarios);
 
         if (usuarioEncontrado) {
 

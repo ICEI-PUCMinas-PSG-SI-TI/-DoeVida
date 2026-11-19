@@ -20,13 +20,59 @@ function verificarLogin() {
 
 const usuario = verificarLogin();
 
+function carregarHemocentros() {
+
+    const selectHemocentro =
+        document.getElementById(
+            "hemocentro"
+        );
+
+    const usuarios = JSON.parse(
+        localStorage.getItem(
+            "usuarios"
+        )
+    ) || [];
+
+    const hemocentros =
+        usuarios.filter(
+            usuario =>
+                usuario.tipoUsuario ===
+                "hemocentro"
+        );
+
+    hemocentros.forEach(
+        hemocentro => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                hemocentro.id;
+
+            option.textContent =
+                hemocentro.nomeInstituicao;
+
+            selectHemocentro.appendChild(
+                option
+            );
+
+        }
+    );
+}
+
 function agendar() {
 
     let data =
         document.getElementById("data").value;
 
-    let hemocentro =
-        document.getElementById("hemocentro").value;
+    let hemocentroId =
+        Number(
+            document.getElementById(
+                "hemocentro"
+            ).value
+        );
 
     let horarioSelecionado =
         document.querySelector(
@@ -50,12 +96,15 @@ function agendar() {
 
     if (
         data === "" ||
-        hemocentro === "" ||
+        !hemocentroId ||
         horario === "" ||
         sangue === ""
     ) {
 
-        alert("Preencha todos os campos!");
+        alert(
+            "Preencha todos os campos!"
+        );
+
         return;
     }
 
@@ -74,21 +123,40 @@ function agendar() {
         )
     ) || [];
 
-    const novoAgendamento = {
+    const usuarios = JSON.parse(
+        localStorage.getItem(
+            "usuarios"
+        )
+    ) || [];
 
-        data: data,
-        hora: horario,
-        hemocentro: hemocentro,
-        sangue: sangue
+    const hemocentroEncontrado =
+        usuarios.find(
+            usuario =>
+                usuario.id ===
+                hemocentroId
+        );
 
-    };
+    if (!hemocentroEncontrado) {
+
+        alert(
+            "Hemocentro não encontrado."
+        );
+
+        return;
+    }
 
     const jaExiste = agendamentos.some(
         function (agendamento) {
 
             return (
+
                 agendamento.data === data &&
-                agendamento.hora === horario
+
+                agendamento.horario === horario &&
+
+                agendamento.hemocentroId ===
+                hemocentroId
+
             );
 
         }
@@ -102,6 +170,31 @@ function agendar() {
 
         return;
     }
+
+    const novoAgendamento = {
+
+        id: Date.now(),
+
+        usuarioId:
+            usuario.id,
+
+        hemocentroId:
+            hemocentroId,
+
+        data: data,
+
+        horario: horario,
+
+        sangue: sangue,
+
+        status: "pendente",
+
+        dataSolicitacao:
+            new Date()
+                .toISOString()
+                .split("T")[0]
+
+    };
 
     agendamentos.push(
         novoAgendamento
@@ -148,3 +241,13 @@ let hoje =
 
 document.getElementById("data").min =
     hoje;
+    
+
+    document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        carregarHemocentros();
+
+    }
+);

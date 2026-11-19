@@ -31,7 +31,28 @@
       "estado": "MG",
       "latitude": -19.9208,
       "longitude": -43.9378
+    },
+
+    {
+      "id": 3,
+      "tipoUsuario": "hemocentro",
+      "nomeInstituicao": "Hospital Felício Rocho",
+      "cnpj": "17214149000176",
+      "email": "felicioRocho@hospital.com",
+      "senha": "123456",
+      "telefone": "3133333333",
+      "fotoPerfil": "img/.../....png",
+      "dataCadastro": "2026-10-01",
+      "cep": " 30110-934",
+      "rua": "  Av. do Contorno",
+      "numero": " 9530",
+      "bairro": "Barro Preto,",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "latitude": -19.9230828,
+      "longitude":-43.9570999
     }
+
   ],
 
   "campanhas": [

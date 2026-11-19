@@ -149,11 +149,24 @@ function mostrarAgendamentos() {
         )
     ) || [];
 
+    const usuarios = JSON.parse(
+        localStorage.getItem(
+            "usuarios"
+        )
+    ) || [];
+
     listaProximosAgendamentos.innerHTML =
         "";
 
+    const meusAgendamentos =
+        agendamentos.filter(
+            agendamento =>
+                agendamento.usuarioId ===
+                usuario.id
+        );
+
     if (
-        agendamentos.length === 0
+        meusAgendamentos.length === 0
     ) {
 
         listaProximosAgendamentos.innerHTML = `
@@ -165,19 +178,31 @@ function mostrarAgendamentos() {
         return;
     }
 
-    agendamentos.sort(
+    meusAgendamentos.sort(
         function (a, b) {
 
             return (
-                a.data + a.hora
+                a.data +
+                a.horario
             ).localeCompare(
-                b.data + b.hora
+                b.data +
+                b.horario
             );
+
         }
     );
 
-    agendamentos.forEach(
-    function (agendamento, indice) {
+    meusAgendamentos.forEach(
+        function (
+            agendamento
+        ) {
+
+            const hemocentro =
+                usuarios.find(
+                    usuario =>
+                        usuario.id ===
+                        agendamento.hemocentroId
+                );
 
             const item =
                 document.createElement(
@@ -187,113 +212,111 @@ function mostrarAgendamentos() {
             item.className =
                 "lembrete-item";
 
+            let statusTexto =
+                "";
+
+            if (
+                agendamento.status ===
+                "pendente"
+            ) {
+
+                statusTexto =
+                    "⏳ Pendente";
+
+            }
+
+            else if (
+                agendamento.status ===
+                "confirmado"
+            ) {
+
+                statusTexto =
+                    "✅ Confirmado";
+
+            }
+
+            else if (
+                agendamento.status ===
+                "recusado"
+            ) {
+
+                statusTexto =
+                    "❌ Recusado";
+
+            }
+
             item.innerHTML = `
-    <h3>Doação de Sangue</h3>
+            
+                <h3>
+                    Doação de Sangue
+                </h3>
 
-    <p>
-        <strong>Data:</strong>
-        ${agendamento.data
-            .split("-")
-            .reverse()
-            .join("/")}
-    </p>
+                <p>
+                    <strong>Data:</strong>
+                    ${agendamento.data
+                        .split("-")
+                        .reverse()
+                        .join("/")}
+                </p>
 
-    <p>
-        <strong>Horário:</strong>
-        ${agendamento.hora}
-    </p>
+                <p>
+                    <strong>Horário:</strong>
+                    ${agendamento.horario}
+                </p>
 
-    <p>
-        <strong>Hemocentro:</strong>
-        ${agendamento.hemocentro}
-    </p>
+                <p>
+                    <strong>Hemocentro:</strong>
+                    ${hemocentro
+                        ? hemocentro.nomeInstituicao
+                        : "Não encontrado"}
+                </p>
 
-    <p>
-        <strong>Tipo Sanguíneo:</strong>
-        ${agendamento.sangue}
-    </p>
-`;
+                <p>
+                    <strong>Tipo Sanguíneo:</strong>
+                    ${agendamento.sangue}
+                </p>
 
-const botaoExcluir =
-    document.createElement(
-        "button"
-    );
+                <p>
+                    <strong>Status:</strong>
+                    ${statusTexto}
+                </p>
 
-botaoExcluir.className =
-    "btn btn-outline-danger";
+            `;
 
-botaoExcluir.textContent =
-    "Cancelar Agendamento";
+                     const botaoExcluir =
+                document.createElement(
+                    "button"
+                );
 
-botaoExcluir.addEventListener(
-    "click",
-    function () {
+            botaoExcluir.className =
+                "btn btn-outline-danger";
 
-        excluirAgendamento(
-            indice
-        );
+            botaoExcluir.textContent =
+                "Cancelar Agendamento";
 
-    }
-);
+            botaoExcluir.addEventListener(
+                "click",
+                function () {
 
-item.appendChild(
-    botaoExcluir
-);
+                    excluirAgendamento(
+                        agendamento.id
+                    );
 
+                }
+            );
+
+            item.appendChild(
+                botaoExcluir
+            );
 
             listaProximosAgendamentos
-                .appendChild(item);
+                .appendChild(
+                    item
+                );
+
         }
     );
 }
-
-formulario.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-        const novoLembrete = {
-
-            titulo:
-                campoTitulo.value.trim(),
-
-            data:
-                campoData.value,
-
-            hora:
-                campoHora.value
-
-        };
-
-        if (
-            !novoLembrete.titulo ||
-            !novoLembrete.data ||
-            !novoLembrete.hora
-        ) {
-
-            alert(
-                "Preencha todos os campos!"
-            );
-
-            return;
-        }
-
-        lembretes.push(
-            novoLembrete
-        );
-
-        salvarLembretes();
-
-        mostrarLembretes();
-
-        formulario.reset();
-
-        alert(
-            "Lembrete adicionado com sucesso!"
-        );
-    }
-);
 
 function excluirLembrete(
     indice
@@ -320,38 +343,43 @@ function excluirLembrete(
     }
 }
 
-function excluirAgendamento(indice) {
+function excluirAgendamento(
+    idAgendamento
+) {
 
     const confirmar = confirm(
         "Deseja realmente cancelar este agendamento?"
     );
 
-    if (confirmar) {
-
-        let agendamentos = JSON.parse(
-            localStorage.getItem(
-                "agendamentos"
-            )
-        ) || [];
-
-        agendamentos.splice(
-            indice,
-            1
-        );
-
-        localStorage.setItem(
-            "agendamentos",
-            JSON.stringify(
-                agendamentos
-            )
-        );
-
-        mostrarAgendamentos();
-
-        alert(
-            "Agendamento cancelado!"
-        );
+    if (!confirmar) {
+        return;
     }
+
+    let agendamentos = JSON.parse(
+        localStorage.getItem(
+            "agendamentos"
+        )
+    ) || [];
+
+    agendamentos =
+        agendamentos.filter(
+            agendamento =>
+                agendamento.id !==
+                idAgendamento
+        );
+
+    localStorage.setItem(
+        "agendamentos",
+        JSON.stringify(
+            agendamentos
+        )
+    );
+
+    mostrarAgendamentos();
+
+    alert(
+        "Agendamento cancelado!"
+    );
 }
 
 mostrarLembretes();
