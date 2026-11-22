@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoeVida</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    
+    
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-dark">
+            
+    <div class="container-fluid">
+
+        <a href="HomeUsuario.html">
+            <img class="Logo" src="../imgs/DoeVida-Logo.png" alt="logo DoeVida">
+        </a>
+        
+        
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#menuUsuario">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+    </div>
+</nav>
+</header>
+
+<div class="offcanvas offcanvas-end" id="menuUsuario">
+
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Serviços</h5>
+
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas">
+        </button>
+    </div>
+
+    <div class="offcanvas-body">
+
+        <ul class="nav flex-column">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/src/pages/HomeUsuario.html">Início</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/src/pages/LocalizarHemocentro.html">Localizar Hemocentro</a>
+            </li>
+
+            <li class="nav-item">
+                <a  class="nav-link" href="/src/pages/Agendamento.html">Agendamento</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/src/pages/Agenda.html">Sua Agenda</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/src/pages/Campanhas.html">Campanhas</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/src/pages/ContaUsuario.html">Minha Conta</a>
+            </li>
+
+
+        </ul>
+
+    </div>
+</div>
+<main class="container mt-4 pb-5" style="min-height: 85vh;">
+
+    <h1 class="text-center fw-bold" style="color: #1e2d50;">
+        Nível de Fidelização
+    </h1>
+
+    <p class="text-center" style="color: #1e2d50;">
+        Acompanhe seu nível e o número de doações realizadas.
+    </p>
+
+    <div class="row justify-content-center mt-4">
+    <div class="col-12">
+
+        <div class="bg-white p-4 rounded-4 shadow-sm">
+            <div class="row align-items-center">
+
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <h5 style="color: #1e2d50;">
+                        Seu nível atual
+                    </h5>
+
+                    <h2 id="nivelAtual" class="fw-bold" style="color: #1e2d50;">
+                        Prata
+                    </h2>
+                </div>
+
+                <div class="col-12 col-md-8">
+                    <h5 style="color: #1e2d50;">
+                        Você possui
+                        <span id="quantidadeDoacoes" class="fw-bold" style="color: #A61B1B;">
+                            6 doações
+                        </span>
+                    </h5>
+
+                    <div class="progress mt-3" style="height: 20px;">
+                        <div id="barraProgresso" class="progress-bar"
+                             style="width: 60%; background-color: #A61B1B;">
+                        </div>
+                    </div>
+
+                    <p id="textoProgresso"class="mt-2" style="color: #1e2d50;">
+                        6 / 10 doações
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<h3 class="fw-bold mt-5 mb-4" style="color: #1e2d50;">
+    Níveis de Fidelização
+</h3>
+
+<div class="row g-3">
+
+    <!-- Bronze -->
+    <div class="col-12 col-md-4">
+        <div id="cardBronze" class="bg-white p-4 rounded-4 shadow-sm text-center h-100" style="border: 2px solid #1e2d50;">
+            <h3 class="fw-bold" style="color: #1e2d50;">
+                Bronze
+            </h3>
+            <p class="mb-0" style="color: #1e2d50;">
+                1 a 4 doações
+            </p>
+        </div>
+    </div>
+
+    <!-- Prata -->
+    <div class="col-12 col-md-4">
+        <div id="cardPrata" class="bg-white p-4 rounded-4 shadow-sm text-center h-100" style="border: 2px solid #1e2d50;">
+             <h3 class="fw-bold" style="color: #1e2d50;">
+                Prata
+            </h3>
+            <p style="color: #1e2d50;">
+                5 a 9 doações
+            </p>
+        </div>
+    </div>
+
+    <!-- Ouro -->
+    <div class="col-12 col-md-4">
+        <div id="cardOuro" class="bg-white p-4 rounded-4 shadow-sm text-center h-100" style="border: 2px solid #1e2d50;">
+            <h3 class="fw-bold" style="color: #1e2d50;">
+                Ouro
+            </h3>
+            <p class="mb-0" style="color: #1e2d50;">
+                10 ou mais doações
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/Fidelizacao.js"></script>
+</body>
+</html>
